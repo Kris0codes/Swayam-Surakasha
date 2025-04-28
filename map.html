@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crime Map | Swayam Suraksha</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+
+  <style>
+    #map {
+      height: 80vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Swayam Suraksha</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="map.html">Crime Map</a></li>
+        <li class="nav-item"><a class="nav-link" href="report.html">Report Crime</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Map Section -->
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Real-Time Crime Map</h2>
+  <div id="map"></div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Swayam Suraksha. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Google Maps API -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeAK4-R6j5iEcfu4Ml8H91bpRIzHBVCUE&callback=initMap"
+  async defer></script>
+
+<!-- Map Script -->
+<script>
+function initMap() {
+  const indiaCenter = { lat: 22.9734, lng: 78.6569 };
+
+  const map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 5,
+    center: indiaCenter
+  });
+
+  // Example Crime Data
+  const crimes = [
+    { lat: 28.7041, lng: 77.1025, type: "Robbery", description: "Robbery reported near Connaught Place." },
+    { lat: 19.0760, lng: 72.8777, type: "Assault", description: "Assault case near Mumbai Central." },
+    { lat: 13.0827, lng: 80.2707, type: "Burglary", description: "House burglary reported in Chennai." },
+    { lat: 13.0894, lng: 80.2712, type: "Burglary", description: "House burglary reported in Chennai." }
+  ];
+
+  crimes.forEach(crime => {
+    const marker = new google.maps.Marker({
+      position: { lat: crime.lat, lng: crime.lng },
+      map: map,
+      title: crime.type
+    });
+
+    const infowindow = new google.maps.InfoWindow({
+      content: `<strong>${crime.type}</strong><br>${crime.description}`
+    });
+
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  });
+}
+</script>
+
+</body>
+</html>
