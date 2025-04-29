@@ -194,6 +194,20 @@
 
 <!-- Custom JS -->
 <script>
+
+  // Autofill role from previous selection
+document.addEventListener('DOMContentLoaded', function() {
+  const selectedRole = localStorage.getItem('selectedRole');
+  if (selectedRole) {
+    const userTypeSelect = document.getElementById('signupUserType');
+    if (userTypeSelect) {
+      userTypeSelect.value = selectedRole;
+      // Trigger change event to show Police ID field if needed
+      userTypeSelect.dispatchEvent(new Event('change'));
+    }
+  }
+});
+
   // Toggle between Sign Up and Sign In
   function toggleForms(formType) {
     const signupForm = document.getElementById('signupForm');
