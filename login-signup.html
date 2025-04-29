@@ -125,22 +125,21 @@
   </style>
 </head>
 <body>
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img src="main-logo.png" alt="Swayam Suraksha Logo" class="brand-logo">
-      <div class="brand-text">
+      <div class="brand-text ms-2">
         <strong>Swayam</strong><br>
         <span>Suraksha</span>
       </div>
     </a>
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -153,10 +152,27 @@
           <a class="nav-link" href="about.html">About Us</a>
         </li>
       </ul>
+
+      <!-- Emergency Dropdown aligned to right end -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-medium text-danger" href="#" id="emergencyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Emergency
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="emergencyDropdown">
+            <li><a class="dropdown-item" href="tel:100"><i class="bi bi-telephone-fill me-2"></i>Police - 100</a></li>
+            <li><a class="dropdown-item" href="tel:102"><i class="bi bi-telephone-fill me-2"></i>Ambulance - 102</a></li>
+            <li><a class="dropdown-item" href="tel:101"><i class="bi bi-telephone-fill me-2"></i>Fire Service - 101</a></li>
+            <li><a class="dropdown-item" href="tel:1091"><i class="bi bi-telephone-fill me-2"></i>Women's Helpline - 1091</a></li>
+            <li><a class="dropdown-item" href="tel:108"><i class="bi bi-telephone-fill me-2"></i>Disaster Management - 108</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
 
+<<<<<<< Updated upstream
 <!-- Main Overlay Section -->
 <div class="overlay">
   <div class="container py-5">
@@ -203,6 +219,19 @@
               </div>
             </form>
           </div>
+=======
+
+
+<!-- Main Content -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      
+      <!-- Sign Up Form -->
+      <div class="card mb-4" id="signupForm">
+        <div class="card-header bg-white text-center border-0 pt-4">
+          <h2 class="card-title">Create Account</h2>
+>>>>>>> Stashed changes
         </div>
         
         <!-- Sign In Form -->
