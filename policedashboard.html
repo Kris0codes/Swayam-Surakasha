@@ -280,11 +280,12 @@
       resize: vertical;
     }
     
-    /* Footer styles */
+    /* Footer styles - UPDATED TO BE MORE COMPACT */
     footer {
       background-color: #212529;
       color: #ddd;
-      padding: 25px 0 15px;
+      padding: 15px 0 5px;
+      font-size: 0.9rem;
     }
     
     footer a {
@@ -298,23 +299,47 @@
     }
     
     .footer-logo {
-      height: 50px;
-      margin-right: 10px;
+      height: 30px;
+      margin-right: 5px;
     }
     
     .footer-brand {
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
     }
     
+    .compact-footer .form-control {
+      height: 30px;
+      font-size: 0.85rem;
+    }
+    
+    .compact-footer .btn {
+      padding: 2px 8px;
+      font-size: 0.85rem;
+    }
+    
+    .compact-footer h6 {
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+    
+    .compact-footer p {
+      margin-bottom: 5px;
+      font-size: 0.85rem;
+    }
+    
+    .compact-footer ul li {
+      margin-bottom: 3px;
+      font-size: 0.85rem;
+    }
+    
     .separator {
       border: 0;
-      height: 3px;
+      height: 1px;
       background: #333;
-      margin-top: 60px;
-      margin-bottom: 40px;
+      margin: 8px 0;
     }
     
     /* Modal styles */
@@ -570,41 +595,41 @@
   </div>
 </div>
 
-<!-- Footer -->
-<footer class="text-white bg-dark pt-4 pb-2">
+<!-- UPDATED: Compact Footer -->
+<footer class="text-white bg-dark pt-2 pb-1 compact-footer">
   <div class="container">
-    <div class="row text-start">
-      <div class="col-md-3 mb-3 d-flex align-items-center">
-        <img src="main-logo.png" alt="Logo" width="40" height="40" class="me-2">
-        <h5 class="mt-2 mb-0">Swayam Suraksha</h5>
+    <div class="row text-start align-items-center">
+      <div class="col-md-3 mb-2 d-flex align-items-center">
+        <img src="main-logo.png" alt="Logo" width="30" height="30" class="me-2">
+        <span class="fs-6 fw-bold">Swayam Suraksha</span>
       </div>
-      <div class="col-md-3 mb-3">
-        <h6>Stay Updated</h6>
-        <form class="d-flex flex-column">
-          <input type="email" class="form-control mb-2" placeholder="Your email">
-          <button class="btn btn-success btn-sm w-50">Subscribe</button>
-        </form>
-        <h6 class="mt-3">Quick Links</h6>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-success">Report a Crime</a></li>
-          <li><a href="#" class="text-success">About Us</a></li>
-          <li><a href="#" class="text-success">Crime Map</a></li>
-        </ul>
+
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Stay Updated</h6>
+        <div class="d-flex">
+          <input type="email" class="form-control form-control-sm me-1" placeholder="Email">
+          <button class="btn btn-success btn-sm">OK</button>
+        </div>
       </div>
-      <div class="col-md-3 mb-3">
-        <h6>Contact Us</h6>
-        <p>Email: support@swayamsuraksha.com</p>
-        <p>Phone: 100</p>
+
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Contact</h6>
+        <p class="mb-0">support@swayamsuraksha.com</p>
+        <p class="mb-0">Emergency: 100</p>
       </div>
-      <div class="col-md-3 mb-3">
-        <h6>Visit Us</h6>
-        <p>Police HQ, Sector 9, Bangalore</p>
-        <p>Mon–Fri: 9am – 6pm</p>
+
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Quick Links</h6>
+        <div class="d-flex flex-wrap">
+          <a href="report.html" class="text-success me-2">Report Crime</a>
+          <a href="about.html" class="text-success me-2">About Us</a>
+          <a href="map.html" class="text-success">Crime Map</a>
+        </div>
       </div>
     </div>
-    <hr class="border-secondary mt-2">
-    <div class="text-center text pb-2">
-      © Swayam Suraksha all rights reserved 2025
+    <hr class="border-secondary my-1">
+    <div class="text-center pb-1">
+      <small>© Swayam Suraksha all rights reserved 2025</small>
     </div>
   </div>
 </footer>
