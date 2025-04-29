@@ -5,198 +5,242 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Crime Map | Swayam Suraksha</title>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeAK4-R6j5iEcfu4Ml8H91bpRIzHBVCUE&callback=initMap" async defer></script>
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Bootstrap Icons (optional for consistency) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-image: url('Background.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center;
       margin: 0;
       padding: 0;
     }
 
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.9);
-      min-height: 100vh;
-      padding-top: 70px; /* For navbar */
-    }
-
-    /* Navbar styles */
-    .navbar {
-      background-color: #ffffff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .navbar-brand {
-      display: flex;
-      align-items: center;
-      font-weight: 700;
-      color: #333 !important;
-    }
-
-    .nav-link {
-      color: #333 !important;
-      font-weight: 500;
-      margin-right: 15px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-link:hover {
-      color: #4CAF50 !important;
-      transform: translateY(-2px);
-    }
-
-    .nav-link.active {
-      color: #4CAF50 !important;
-      font-weight: 600;
-    }
-
-    /* Map container */
     #map {
       height: 80vh;
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
     }
 
-    /* Footer styles */
-    .footer {
+    .navbar {
       background-color: #ffffff;
-      padding: 15px 0;
+    }
+
+    .navbar-nav .nav-link {
+      margin-right: 20px;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #4CAF50;
+      transform: translateY(-2px);
+    }
+
+    .brand-logo {
+      height: 50px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .separator {
+      border: 0;
+      height: 3px;
+      background: #333;
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+
+    footer {
+      background-color: #212529;
+      color: #ddd;
+      padding: 40px 0;
+    }
+
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #2e7d32;
+    }
+
+    .footer-logo {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .footer-brand {
+      font-weight: bold;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-bottom {
       text-align: center;
-      font-size: 14px;
-      color: #555;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-      margin-top: 40px;
+      padding-top: 15px;
+      border-top: 1px solid #444;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <img src="main-logo.png" alt="Swayam Suraksha Logo" class="brand-logo" style="height: 50px; margin-right: 10px;">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="main-logo.png" alt="Logo" class="brand-logo">
       <div class="brand-text">
-        <strong>Swayam</strong><br>
-        <span>Suraksha</span>
+        <strong>Swayam</strong> <br>Suraksha
       </div>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link active" href="map.html">Crime Map</a></li>
-        <li class="nav-item"><a class="nav-link" href="report.html">Report Crime</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="report.html">Report a Crime</a></li>
+        <li class="nav-item"><a class="nav-link" href="map.html">Crime Map</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item">
+          <a href="login-signup.html" class="btn btn-green me-2">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="login-signup.html" class="btn btn-outline-success rounded-pill">Register</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Overlay Main Content -->
-<div class="overlay">
-  <div class="container my-5">
-    <h2 class="mb-4 text-center">Real-Time Crime Map</h2>
-    <div id="map"></div>
-  </div>
+<!-- HR Separator -->
+<hr class="separator">
 
-  <!-- Footer -->
-  <footer class="text-white bg-dark pt-2 pb-1 compact-footer">
-    <div class="container">
-      <div class="row text-start align-items-center">
-        <div class="col-md-3 mb-2 d-flex align-items-center">
-          <img src="main-logo.png" alt="Logo" width="30" height="30" class="me-2">
-          <span class="fs-6 fw-bold">Swayam Suraksha</span>
-        </div>
-  
-        <div class="col-md-3 mb-2">
-          <h6 class="mb-1">Stay Updated</h6>
-          <div class="d-flex">
-            <input type="email" class="form-control form-control-sm me-1" placeholder="Email">
-            <button class="btn btn-success btn-sm">OK</button>
-          </div>
-        </div>
-  
-        <div class="col-md-3 mb-2">
-          <h6 class="mb-1">Contact</h6>
-          <p class="mb-0">support@swayamsuraksha.com</p>
-          <p class="mb-0">Emergency: 100</p>
-        </div>
-  
-        <div class="col-md-3 mb-2">
-          <h6 class="mb-1">Quick Links</h6>
-          <div class="d-flex flex-wrap">
-            <a href="report.html" class="text-success me-2">Report Crime</a>
-            <a href="about.html" class="text-success me-2">About Us</a>
-            <a href="map.html" class="text-success">Crime Map</a>
-          </div>
-        </div>
-      </div>
-      <hr class="border-secondary my-1">
-      <div class="text-center pb-1">
-        <small>© Swayam Suraksha all rights reserved 2025</small>
-      </div>
-    </div>
-  </footer>
+<!-- Map Section -->
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Real-Time Crime Map</h2>
+  <div id="map"></div>
 </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-3 footer-brand">
+        <img src="main-logo.png" alt="Logo" class="footer-logo">
+        <span>Swayam Suraksha</span>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Contact Us</h5>
+        <p>Email: support@swayamsuraksha.com</p>
+        <p>Phone: 100</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Quick Links</h5>
+        <a href="login-signup.html">Login/SignUp</a><br>
+        <a href="report.html">Report a Crime</a><br>
+        <a href="about.html">About Us</a><br>
+        <a href="map.html">Crime Map</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Swayam Suraksha. All rights reserved 2025</div>
+  </div>
+</footer>
 
-<!-- Google Maps API -->
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeAK4-R6j5iEcfu4Ml8H91bpRIzHBVCUE&callback=initMap"
-  async defer></script>
-
-<!-- Map Script -->
+<!-- Custom Map Script -->
 <script>
-function initMap() {
-  const indiaCenter = { lat: 22.9734, lng: 78.6569 };
+let map;
 
-  const map = new google.maps.Map(document.getElementById('map'), {
+function initMap() {
+  const defaultLocation = { lat: 22.9734, lng: 78.6569 }; // Center of India
+
+  map = new google.maps.Map(document.getElementById("map"), {
     zoom: 5,
-    center: indiaCenter
+    center: defaultLocation,
+    styles: [
+      {
+        featureType: "all",
+        elementType: "geometry",
+        stylers: [
+          { color: "#202c3e" }
+        ]
+      },
+      {
+        featureType: "all",
+        elementType: "labels.text.fill",
+        stylers: [
+          { color: "#ffffff" }
+        ]
+      },
+      {
+        featureType: "all",
+        elementType: "labels.text.stroke",
+        stylers: [
+          { color: "#000000" },
+          { lightness: 13 }
+        ]
+      }
+    ]
   });
 
-  // Example Crime Data
+  // Geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      const userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      map.setCenter(userLocation);
+      addMarker(userLocation, "You are here", "Your current location");
+    });
+  }
+
+  fetchCrimeData();
+}
+
+function fetchCrimeData() {
+  // Example: Replace this with your real-time API call
   const crimes = [
     { lat: 28.7041, lng: 77.1025, type: "Robbery", description: "Robbery reported near Connaught Place." },
-    { lat: 19.0760, lng: 72.8777, type: "Assault", description: "Assault case near Mumbai Central." },
-    { lat: 13.0827, lng: 80.2707, type: "Burglary", description: "House burglary reported in Chennai." },
-    { lat: 13.0894, lng: 80.2712, type: "Burglary", description: "House burglary reported in Chennai." }
+    { lat: 19.076, lng: 72.8777, type: "Assault", description: "Assault case near Mumbai Central." },
+    { lat: 13.0827, lng: 80.2707, type: "Burglary", description: "House burglary reported in Chennai." }
   ];
 
   crimes.forEach(crime => {
-    const marker = new google.maps.Marker({
-      position: { lat: crime.lat, lng: crime.lng },
-      map: map,
-      title: crime.type
-    });
+    addMarker({ lat: crime.lat, lng: crime.lng }, crime.type, crime.description);
+  });
+}
 
-    const infowindow = new google.maps.InfoWindow({
-      content: `<strong>${crime.type}</strong><br>${crime.description}`
-    });
+function addMarker(location, title, description) {
+  const marker = new google.maps.Marker({
+    position: location,
+    map: map,
+    title: title,
+    icon: {
+      url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+    }
+  });
 
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
+  const infowindow = new google.maps.InfoWindow({
+    content: `<strong>${title}</strong><br>${description}`
+  });
+
+  marker.addListener("click", () => {
+    infowindow.open(map, marker);
   });
 }
 </script>
