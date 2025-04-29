@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Swayam Suraksha - Sign Up</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     body, html {
       font-family: 'Poppins', sans-serif;
@@ -83,17 +83,15 @@
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">
-      <img src="main-logo.png" alt="Logo" class="brand-logo">
+      <img src="main-logo.png" alt="Logo" class="brand-logo"/>
       <div class="brand-text ms-2">
         <strong>Swayam</strong><br>
         <span>Suraksha</span>
       </div>
     </a>
-
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -164,19 +162,30 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  document.getElementById('signupUserType').addEventListener('change', function() {
+  // Show Police ID field if user selects 'police'
+  document.getElementById('signupUserType').addEventListener('change', function () {
     const policeFields = document.getElementById('policeFields');
-    policeFields.classList.toggle('d-none', this.value !== 'police');
+    if (this.value === 'police') {
+      policeFields.classList.remove('d-none');
+    } else {
+      policeFields.classList.add('d-none');
+    }
   });
 
-  document.getElementById('formSignup').addEventListener('submit', function(e) {
+  // Handle Signup Submission with role-based redirection
+  document.getElementById('formSignup').addEventListener('submit', function (e) {
     e.preventDefault();
+    
     const userType = document.getElementById('signupUserType').value;
-    if (userType === 'police' && !document.getElementById('signupIdProof').files.length) {
-      alert('Please upload your police ID proof.');
-      return;
-    }
+
+    // Simulate successful signup
     alert('Signup successful!');
+
+    if (userType === 'police') {
+      window.location.href = 'policedashboard.html';
+    } else {
+      window.location.href = 'afterlogin.html';
+    }
   });
 </script>
 

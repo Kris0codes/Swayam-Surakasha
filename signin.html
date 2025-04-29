@@ -180,7 +180,8 @@
 
   document.getElementById('formSignin').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Signin successful!');
+    // Here you can add validation/authentication logic
+    window.location.href = 'afterlogin.html'; // Redirect on success
   });
 
   document.getElementById('formResetPassword').addEventListener('submit', function(e) {
@@ -192,6 +193,7 @@
     }, 3000);
   });
 </script>
+
 
 </body>
 </html>

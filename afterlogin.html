@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swayam Suraksha</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    .btn-green {
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 25px;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: pulse 2s infinite;
+    }
+
+    .btn-green:hover {
+      background-color: #388e3c;
+      transform: scale(1.05);
+    }
+
+    .btn-outline-success {
+      animation: pulse 2s infinite;
+    }
+
+    .btn-outline-success:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .hero-section {
+      background-color: #fdf6e3;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-img img {
+      width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .alternate-bg-cream {
+      background-color: #fdf6e3;
+    }
+
+    .alternate-bg-green {
+      background-color: #e8f5e9;
+    }
+
+    h2 {
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #0d6efd;
+    }
+
+    .card-custom {
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.4s;
+    }
+
+    .card-custom:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      background-color: #212529;
+      color: #ddd;
+      padding: 15px 0 5px;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #2e7d32;
+    }
+
+    .footer-logo {
+      height: 30px;
+      margin-right: 5px;
+    }
+
+    .footer-brand {
+      font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .compact-footer .form-control {
+      height: 30px;
+      font-size: 0.85rem;
+    }
+
+    .compact-footer .btn {
+      padding: 2px 8px;
+      font-size: 0.85rem;
+    }
+
+    .compact-footer h6 {
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+
+    .compact-footer p {
+      margin-bottom: 5px;
+      font-size: 0.85rem;
+    }
+
+    .compact-footer ul li {
+      margin-bottom: 3px;
+      font-size: 0.85rem;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      transition: background-color 0.4s;
+    }
+
+    .navbar-nav .nav-link {
+      margin-right: 20px;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #4CAF50;
+      transform: translateY(-2px);
+    }
+
+    .brand-logo {
+      height: 50px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .separator {
+      border: 0;
+      height: 3px;
+      background: #333;
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+
+    .fixed-icons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .fixed-icons a {
+      display: block;
+      margin-bottom: 10px;
+      background-color: #25D366;
+      padding: 15px;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .fixed-icons a.call {
+      background-color: #28a745;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Google Translate -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<div id="google_translate_element" style="position: absolute; top: 40px; right: 10px; z-index: 1000; background: #fff; padding: 5px; border: 1px solid black;"></div>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'hi,ta,te,bn,ml,kn,mr,gu,pa,or,en',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="main-logo.png" alt="Logo" class="brand-logo">
+      <div class="brand-text">
+        <strong>Swayam</strong> <br>Suraksha
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="map.html">Crime Map</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <!-- Profile Icon Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle fs-4"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="dashboard.html">Dashboard</a></li>
+            <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="logout.html">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<hr class="separator">
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>Welcome to Swayam Suraksha</h1>
+      <p class="lead">Building Trust. Ensuring Safety.</p>
+      <a href="report.html" class="btn btn-green mt-3">Report Now</a>
+    </div>
+    <div class="hero-img">
+      <img src="pol.jpg" alt="Safety Hero">
+    </div>
+  </div>
+</section>
+
+<!-- Past Activities Carousel -->
+<section class="alternate-bg-green">
+  <div class="container">
+    <h2 class="text-center">Past Activities</h2>
+    <div id="activitiesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="act1.jpg" alt="Activity 1" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Ms. Sharma reported a theft</h5>
+              <p>Thanks to her prompt action, the robber was caught within hours!</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="act2.png" alt="Activity 2" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Mr. Arjun assisted in a missing child case</h5>
+              <p>The child was safely reunited with their family.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="act3.jpg" alt="Activity 3" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Mr. Raj helped prevent a building fire</h5>
+              <p>Saved multiple lives by prompt action.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</section>
+
+<!-- Local News Carousel -->
+<section class="alternate-bg-cream">
+  <div class="container">
+    <h2 class="text-center">Local News</h2>
+    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="news1.jpg" alt="News 1" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>New CCTV cameras installed</h5>
+              <p>Increasing public safety and crime prevention measures.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="news2.jpg" alt="News 2" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Local police conduct workshop</h5>
+              <p>Hundreds of residents attend and learn self-defense techniques.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="news3.jpg" alt="News 3" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Fire Protection Drill</h5>
+              <p>Residents trained in fire safety techniques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</section>
+
+<footer class="text-white bg-dark pt-2 pb-1 compact-footer">
+  <div class="container">
+    <div class="row text-start align-items-center">
+      <div class="col-md-3 mb-2 d-flex align-items-center">
+        <img src="main-logo.png" alt="Logo" width="30" height="30" class="me-2">
+        <span class="fs-6 fw-bold">Swayam Suraksha</span>
+      </div>
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Stay Updated</h6>
+        <div class="d-flex">
+          <input type="email" class="form-control form-control-sm me-1" placeholder="Email">
+          <button class="btn btn-success btn-sm">OK</button>
+        </div>
+      </div>
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Contact</h6>
+        <p class="mb-0">support@swayamsuraksha.com</p>
+        <p class="mb-0">Emergency: 100</p>
+      </div>
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Quick Links</h6>
+        <div class="d-flex flex-wrap">
+          <a href="report.html" class="text-success me-2">Report Crime</a>
+          <a href="about.html" class="text-success me-2">About Us</a>
+          <a href="map.html" class="text-success">Crime Map</a>
+        </div>
+      </div>
+    </div>
+    <hr class="border-secondary my-1">
+    <div class="text-center pb-1">
+      <small>© Swayam Suraksha all rights reserved 2025</small>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
