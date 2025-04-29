@@ -15,42 +15,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
-    body {
+    body, html {
       font-family: 'Poppins', sans-serif;
-      background-color: #f0f4f3;
-      padding-top: 80px;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-image: url('Background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
     }
-    
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      min-height: 100vh;
+      padding-top: 70px; /* for fixed navbar */
+    }
+
     /* Navbar styles */
     .navbar {
       background-color: #ffffff;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
     }
-    
     .navbar-brand {
       display: flex;
       align-items: center;
     }
-    
     .brand-logo {
       height: 50px;
       width: auto;
       margin-right: 10px;
     }
-    
     .nav-link {
       color: #333 !important;
       font-weight: 500;
       margin-right: 15px;
       transition: all 0.3s ease;
     }
-    
     .nav-link:hover {
       color: #4CAF50 !important;
       transform: translateY(-2px);
     }
-    
+
     /* Button styles */
     .btn-success {
       background-color: #4CAF50;
@@ -58,63 +66,56 @@
       border-radius: 50px;
       transition: all 0.3s ease;
     }
-    
     .btn-success:hover {
       background-color: #388e3c;
       border-color: #388e3c;
       transform: scale(1.05);
     }
-    
     .btn-outline-success {
       color: #4CAF50;
       border-color: #4CAF50;
       border-radius: 50px;
       transition: all 0.3s ease;
     }
-    
     .btn-outline-success:hover {
       background-color: rgba(76, 175, 80, 0.1);
       color: #4CAF50;
       transform: scale(1.05);
     }
-    
+
     /* Card styles */
     .card {
       border-radius: 12px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       border: none;
     }
-    
     .card-title {
       font-weight: 600;
     }
-    
+
     /* Form styles */
     .form-label {
       font-weight: 500;
     }
-    
     .form-control, .form-select {
       border-radius: 8px;
       padding: 10px 15px;
     }
-    
     .form-control:focus, .form-select:focus {
       border-color: #4CAF50;
       box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
     }
-    
+
     /* Toggle link */
     .toggle-link {
       color: #4CAF50;
       text-decoration: underline;
       cursor: pointer;
     }
-    
     .toggle-link:hover {
       color: #388e3c;
     }
-    
+
     /* Success alert */
     .alert-success-custom {
       background-color: #e8f5e9;
@@ -148,7 +149,6 @@
         <li class="nav-item">
           <a class="nav-link" href="report.html">Report a Crime</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="about.html">About Us</a>
         </li>
@@ -157,85 +157,87 @@
   </div>
 </nav>
 
-<!-- Main Content -->
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-      
-      <!-- Sign Up Form -->
-      <div class="card mb-4" id="signupForm">
-        <div class="card-header bg-white text-center border-0 pt-4">
-          <h2 class="card-title">Create Account</h2>
+<!-- Main Overlay Section -->
+<div class="overlay">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        
+        <!-- Sign Up Form -->
+        <div class="card mb-4" id="signupForm">
+          <div class="card-header bg-white text-center border-0 pt-4">
+            <h2 class="card-title">Create Account</h2>
+          </div>
+          <div class="card-body p-4">
+            <form id="formSignup">
+              <div class="mb-3">
+                <label for="signupUserType" class="form-label">Register as:</label>
+                <select class="form-select" id="signupUserType" required>
+                  <option value="" selected disabled>Select...</option>
+                  <option value="citizen">Citizen</option>
+                  <option value="police">Police Officer</option>
+                </select>
+              </div>
+              
+              <div class="mb-3">
+                <label for="signupEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="signupPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signupPassword" placeholder="Enter password" required>
+              </div>
+              
+              <div class="mb-3 d-none" id="policeFields">
+                <label for="signupIdProof" class="form-label">Upload Police ID Proof</label>
+                <input type="file" class="form-control" id="signupIdProof" accept=".jpg,.jpeg,.png,.pdf">
+              </div>
+              
+              <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-success py-2">Sign Up</button>
+              </div>
+              
+              <div class="text-center">
+                <span class="toggle-link" onclick="toggleForms('signin')">Already have an account? Sign In</span>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="card-body p-4">
-          <form id="formSignup">
-            <div class="mb-3">
-              <label for="signupUserType" class="form-label">Register as:</label>
-              <select class="form-select" id="signupUserType" required>
-                <option value="" selected disabled>Select...</option>
-                <option value="citizen">Citizen</option>
-                <option value="police">Police Officer</option>
-              </select>
-            </div>
-            
-            <div class="mb-3">
-              <label for="signupEmail" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
-            </div>
-            
-            <div class="mb-3">
-              <label for="signupPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="signupPassword" placeholder="Enter password" required>
-            </div>
-            
-            <div class="mb-3 d-none" id="policeFields">
-              <label for="signupIdProof" class="form-label">Upload Police ID Proof</label>
-              <input type="file" class="form-control" id="signupIdProof" accept=".jpg,.jpeg,.png,.pdf">
-            </div>
-            
-            <div class="d-grid gap-2 mb-3">
-              <button type="submit" class="btn btn-success py-2">Sign Up</button>
-            </div>
-            
-            <div class="text-center">
-              <span class="toggle-link" onclick="toggleForms('signin')">Already have an account? Sign In</span>
-            </div>
-          </form>
+        
+        <!-- Sign In Form -->
+        <div class="card mb-4 d-none" id="signinForm">
+          <div class="card-header bg-white text-center border-0 pt-4">
+            <h2 class="card-title">Sign In</h2>
+          </div>
+          <div class="card-body p-4">
+            <form id="formSignin">
+              <div class="mb-3">
+                <label for="signinEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="signinEmail" placeholder="Enter your email" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="signinPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signinPassword" placeholder="Enter password" required>
+              </div>
+              
+              <div class="text-end mb-3">
+                <span class="toggle-link" onclick="showForgotPasswordModal()">Forgot password?</span>
+              </div>
+              
+              <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-success py-2">Sign In</button>
+              </div>
+              
+              <div class="text-center">
+                <span class="toggle-link" onclick="toggleForms('signup')">Don't have an account? Create One</span>
+              </div>
+            </form>
+          </div>
         </div>
+
       </div>
-      
-      <!-- Sign In Form -->
-      <div class="card mb-4 d-none" id="signinForm">
-        <div class="card-header bg-white text-center border-0 pt-4">
-          <h2 class="card-title">Sign In</h2>
-        </div>
-        <div class="card-body p-4">
-          <form id="formSignin">
-            <div class="mb-3">
-              <label for="signinEmail" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="signinEmail" placeholder="Enter your email" required>
-            </div>
-            
-            <div class="mb-3">
-              <label for="signinPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="signinPassword" placeholder="Enter password" required>
-            </div>
-            
-            <div class="text-end mb-3">
-              <span class="toggle-link" onclick="showForgotPasswordModal()">Forgot password?</span>
-            </div>
-            
-            <div class="d-grid gap-2 mb-3">
-              <button type="submit" class="btn btn-success py-2">Sign In</button>
-            </div>
-            
-            <div class="text-center">
-              <span class="toggle-link" onclick="toggleForms('signup')">Don't have an account? Create One</span>
-            </div>
-          </form>
-        </div>
-      </div>
-      
     </div>
   </div>
 </div>
@@ -281,11 +283,9 @@
 
 <!-- Custom JavaScript -->
 <script>
-  // Toggle between signup and signin forms
   function toggleForms(formType) {
     const signupForm = document.getElementById('signupForm');
     const signinForm = document.getElementById('signinForm');
-    
     if (formType === 'signin') {
       signupForm.classList.add('d-none');
       signinForm.classList.remove('d-none');
@@ -294,65 +294,40 @@
       signinForm.classList.add('d-none');
     }
   }
-  
-  // Show police fields when police officer is selected
+
   document.getElementById('signupUserType').addEventListener('change', function() {
     const policeFields = document.getElementById('policeFields');
-    if (this.value === 'police') {
-      policeFields.classList.remove('d-none');
-    } else {
-      policeFields.classList.add('d-none');
-    }
+    policeFields.classList.toggle('d-none', this.value !== 'police');
   });
-  
-  // Show forgot password modal
+
   function showForgotPasswordModal() {
     const modal = new bootstrap.Modal(document.getElementById('forgotPasswordModal'));
-    
-    // Reset the form state
     document.getElementById('resetEmailForm').classList.remove('d-none');
     document.getElementById('resetSuccess').classList.add('d-none');
     document.getElementById('resetEmail').value = '';
-    
     modal.show();
   }
-  
-  // Handle signup form submission
+
   document.getElementById('formSignup').addEventListener('submit', function(e) {
     e.preventDefault();
     const userType = document.getElementById('signupUserType').value;
-    
-    if (userType === 'police') {
-      const idProof = document.getElementById('signupIdProof').files[0];
-      if (!idProof) {
-        alert('Please upload your police ID proof.');
-        return;
-      }
+    if (userType === 'police' && !document.getElementById('signupIdProof').files.length) {
+      alert('Please upload your police ID proof.');
+      return;
     }
-    
     alert('Signup successful!');
-    // In a real app, you would submit the form data to your backend here
   });
-  
-  // Handle signin form submission
+
   document.getElementById('formSignin').addEventListener('submit', function(e) {
     e.preventDefault();
     alert('Signin successful!');
-    // In a real app, you would submit the form data to your backend here
   });
-  
-  // Handle reset password form submission
+
   document.getElementById('formResetPassword').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    // Show success message
     document.getElementById('resetEmailForm').classList.add('d-none');
     document.getElementById('resetSuccess').classList.remove('d-none');
-    
-    // In a real app, you would submit the form data to your backend here
-    
-    // Close the modal after 3 seconds
-    setTimeout(function() {
+    setTimeout(() => {
       const modal = bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal'));
       modal.hide();
     }, 3000);
