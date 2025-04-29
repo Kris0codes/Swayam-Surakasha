@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Report Crime | Swayam Suraksha</title>
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
   <!-- FontAwesome for icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f0f4f3;
-      
       padding-top: 70px;
-    }footer {
+    }
+
+    footer {
       background-color: #212529;
       color: #ddd;
       padding: 40px 0;
@@ -66,24 +67,24 @@
     }
 
     .brand-logo {
-      height: 50px;  /* Fixed logo height */
+      height: 50px;
       width: auto;
       margin-right: 10px;
     }
 
-    /* New styles for the hr separator */
     .separator {
       border: 0;
       height: 3px;
       background: #333;
-      margin-top: 60px;  /* Add some space before the separator */
-      margin-bottom: 40px;  /* Add space after the separator */
+      margin-top: 60px;
+      margin-bottom: 40px;
     }
   </style>
 </head>
 
 <body>
 
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -95,7 +96,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-  
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
@@ -106,156 +107,187 @@
       </div>
     </div>
   </nav>
-<hr class="separator">
 
-<!-- Form Section -->
-<div class="container my-5">
-  <h2 class="mb-4 text-center">Report a Crime</h2>
-  <form>
-    <!-- Choose Name or Anonymous -->
-    <div class="mb-3">
-      <label class="form-label">Reporter Identity</label><br>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="identityOption" id="realNameOption" value="name" checked>
-        <label class="form-check-label" for="realNameOption">Use My Name</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="identityOption" id="anonymousOption" value="anonymous">
-        <label class="form-check-label" for="anonymousOption">Report Anonymously</label>
-      </div>
-    </div>
+  <hr class="separator" />
 
-    <div class="mb-3" id="nameField">
-      <label for="reporterName" class="form-label">Your Name</label>
-      <input type="text" class="form-control" id="reporterName" placeholder="Enter your name">
-    </div>
-
-    <div class="mb-3">
-      <label for="crimeType" class="form-label">Type of Crime</label>
-      <select class="form-select" id="crimeType">
-        <option selected>Select crime type</option>
-        <option>Robbery</option>
-        <option>Assault</option>
-        <option>Burglary</option>
-        <option>Vandalism</option>
-        <option>Other</option>
-      </select>
-    </div>
-
-    <div class="mb-3">
-      <label for="crimeLocation" class="form-label">Location</label>
-      <div class="input-group">
-        <input type="text" class="form-control" id="crimeLocation" placeholder="Enter location manually or use button">
-        <button class="btn btn-outline-success" type="button" id="getLocationBtn">Use My Location</button>
-      </div>
-    </div>
-
-    <div class="mb-3">
-      <label for="crimeDescription" class="form-label">Description</label>
-      <textarea class="form-control" id="crimeDescription" rows="4" placeholder="Describe the incident"></textarea>
-    </div>
-
-    <!-- Photo Upload with choice -->
-    <div class="mb-3">
-      <label class="form-label">Upload Photo (optional)</label><br>
-      <button type="button" class="btn btn-outline-primary me-2 mb-2" id="uploadFromCamera">Take Photo</button>
-      <button type="button" class="btn btn-outline-secondary mb-2" id="uploadFromFiles">Choose from Files</button>
-      <input type="file" id="incidentPhoto" style="display:none;">
-    </div>
-
-    <button type="submit" class="btn btn-success w-100">Submit Report</button>
-  </form>
-</div>
-
-<!-- Footer -->
-<footer class="text-white bg-dark pt-2 pb-1 compact-footer">
-  <div class="container">
-    <div class="row text-start align-items-center">
-      <div class="col-md-3 mb-2 d-flex align-items-center">
-        <img src="main-logo.png" alt="Logo" width="30" height="30" class="me-2">
-        <span class="fs-6 fw-bold">Swayam Suraksha</span>
-      </div>
-
-      <div class="col-md-3 mb-2">
-        <h6 class="mb-1">Stay Updated</h6>
-        <div class="d-flex">
-          <input type="email" class="form-control form-control-sm me-1" placeholder="Email">
-          <button class="btn btn-success btn-sm">OK</button>
+  <!-- Form Section -->
+  <div class="container my-5">
+    <h2 class="mb-4 text-center">Report a Crime</h2>
+    <form id="crimeReportForm">
+      <div class="mb-3">
+        <label class="form-label">Reporter Identity</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="identityOption" id="realNameOption" value="name" checked>
+          <label class="form-check-label" for="realNameOption">Use My Name</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="identityOption" id="anonymousOption" value="anonymous">
+          <label class="form-check-label" for="anonymousOption">Report Anonymously</label>
         </div>
       </div>
 
-      <div class="col-md-3 mb-2">
-        <h6 class="mb-1">Contact</h6>
-        <p class="mb-0">support@swayamsuraksha.com</p>
-        <p class="mb-0">Emergency: 100</p>
+      <div class="mb-3" id="nameField">
+        <label for="reporterName" class="form-label">Your Name</label>
+        <input type="text" class="form-control" id="reporterName" placeholder="Enter your name">
       </div>
 
-      <div class="col-md-3 mb-2">
-        <h6 class="mb-1">Quick Links</h6>
-        <div class="d-flex flex-wrap">
-          <a href="report.html" class="text-success me-2">Report Crime</a>
-          <a href="about.html" class="text-success me-2">About Us</a>
-          <a href="map.html" class="text-success">Crime Map</a>
+      <div class="mb-3">
+        <label for="crimeType" class="form-label">Type of Crime</label>
+        <select class="form-select" id="crimeType">
+          <option value="" selected>Select crime type</option>
+          <option>Robbery</option>
+          <option>Assault</option>
+          <option>Burglary</option>
+          <option>Vandalism</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="crimeLocation" class="form-label">Location</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="crimeLocation" placeholder="Enter location manually or use button">
+          <button class="btn btn-outline-success" type="button" id="getLocationBtn">Use My Location</button>
         </div>
       </div>
-    </div>
-    <hr class="border-secondary my-1">
-    <div class="text-center pb-1">
-      <small>© Swayam Suraksha all rights reserved 2025</small>
-    </div>
+
+      <div class="mb-3">
+        <label for="crimeDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="crimeDescription" rows="4" placeholder="Describe the incident"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Upload Photo (optional)</label><br>
+        <button type="button" class="btn btn-outline-primary me-2 mb-2" id="uploadFromCamera">Take Photo</button>
+        <button type="button" class="btn btn-outline-secondary mb-2" id="uploadFromFiles">Choose from Files</button>
+        <input type="file" id="incidentPhoto" style="display:none;">
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Submit Report</button>
+    </form>
   </div>
-</footer>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Footer -->
+  <footer class="text-white bg-dark pt-2 pb-1 compact-footer">
+    <div class="container">
+      <div class="row text-start align-items-center">
+        <div class="col-md-3 mb-2 d-flex align-items-center">
+          <img src="main-logo.png" alt="Logo" width="30" height="30" class="me-2">
+          <span class="fs-6 fw-bold">Swayam Suraksha</span>
+        </div>
 
-<!-- Script for Location and Form Logic -->
-<script>
-  // Toggle Name Field
-  const realNameOption = document.getElementById('realNameOption');
-  const anonymousOption = document.getElementById('anonymousOption');
-  const nameField = document.getElementById('nameField');
+        <div class="col-md-3 mb-2">
+          <h6 class="mb-1">Stay Updated</h6>
+          <div class="d-flex">
+            <input type="email" class="form-control form-control-sm me-1" placeholder="Email">
+            <button class="btn btn-success btn-sm">OK</button>
+          </div>
+        </div>
 
-  realNameOption.addEventListener('change', () => {
-    nameField.style.display = 'block';
-  });
+        <div class="col-md-3 mb-2">
+          <h6 class="mb-1">Contact</h6>
+          <p class="mb-0">support@swayamsuraksha.com</p>
+          <p class="mb-0">Emergency: 100</p>
+        </div>
 
-  anonymousOption.addEventListener('change', () => {
-    nameField.style.display = 'none';
-  });
+        <div class="col-md-3 mb-2">
+          <h6 class="mb-1">Quick Links</h6>
+          <div class="d-flex flex-wrap">
+            <a href="report.html" class="text-success me-2">Report Crime</a>
+            <a href="about.html" class="text-success me-2">About Us</a>
+            <a href="map.html" class="text-success">Crime Map</a>
+          </div>
+        </div>
+      </div>
+      <hr class="border-secondary my-1">
+      <div class="text-center pb-1">
+        <small>© Swayam Suraksha all rights reserved 2025</small>
+      </div>
+    </div>
+  </footer>
 
-  // Get Live Location
-  document.getElementById('getLocationBtn').addEventListener('click', function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        document.getElementById('crimeLocation').value = `Latitude: ${lat}, Longitude: ${lon}`;
-      }, function(error) {
-        alert('Unable to fetch location. Please allow location access.');
-      });
-    } else {
-      alert('Geolocation is not supported by your browser.');
-    }
-  });
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle Name Field
+    const realNameOption = document.getElementById('realNameOption');
+    const anonymousOption = document.getElementById('anonymousOption');
+    const nameField = document.getElementById('nameField');
 
-  // Photo Upload Options
-  const uploadFromCamera = document.getElementById('uploadFromCamera');
-  const uploadFromFiles = document.getElementById('uploadFromFiles');
-  const incidentPhoto = document.getElementById('incidentPhoto');
+    realNameOption.addEventListener('change', () => {
+      nameField.style.display = 'block';
+    });
 
-  uploadFromCamera.addEventListener('click', () => {
-    incidentPhoto.setAttribute('accept', 'image/*');
-    incidentPhoto.setAttribute('capture', 'environment');
-    incidentPhoto.click();
-  });
+    anonymousOption.addEventListener('change', () => {
+      nameField.style.display = 'none';
+    });
 
-  uploadFromFiles.addEventListener('click', () => {
-    incidentPhoto.removeAttribute('capture');
-    incidentPhoto.setAttribute('accept', 'image/*');
-    incidentPhoto.click();
-  });
-</script>
+    // Get Live Location
+    document.getElementById('getLocationBtn').addEventListener('click', function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          document.getElementById('crimeLocation').value = `Latitude: ${lat}, Longitude: ${lon}`;
+        }, function (error) {
+          alert('Unable to fetch location. Please allow location access.');
+        });
+      } else {
+        alert('Geolocation is not supported by your browser.');
+      }
+    });
 
+    // Photo Upload Options
+    const uploadFromCamera = document.getElementById('uploadFromCamera');
+    const uploadFromFiles = document.getElementById('uploadFromFiles');
+    const incidentPhoto = document.getElementById('incidentPhoto');
+
+    uploadFromCamera.addEventListener('click', () => {
+      incidentPhoto.setAttribute('accept', 'image/*');
+      incidentPhoto.setAttribute('capture', 'environment');
+      incidentPhoto.click();
+    });
+
+    uploadFromFiles.addEventListener('click', () => {
+      incidentPhoto.removeAttribute('capture');
+      incidentPhoto.setAttribute('accept', 'image/*');
+      incidentPhoto.click();
+    });
+
+    // Form Validation and Submission
+    document.getElementById('crimeReportForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const isAnonymous = anonymousOption.checked;
+      const name = document.getElementById('reporterName').value.trim();
+      const type = document.getElementById('crimeType').value;
+      const location = document.getElementById('crimeLocation').value.trim();
+      const description = document.getElementById('crimeDescription').value.trim();
+
+      if (!isAnonymous && name === '') {
+        alert('Please enter your name or select "Report Anonymously".');
+        return;
+      }
+
+      if (type === '') {
+        alert('Please select a crime type.');
+        return;
+      }
+
+      if (location === '') {
+        alert('Please enter or fetch the location.');
+        return;
+      }
+
+      if (description === '') {
+        alert('Please provide a description of the incident.');
+        return;
+      }
+
+      alert('Report submitted successfully! Police have been notified.');
+      this.reset();
+      nameField.style.display = realNameOption.checked ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>
