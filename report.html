@@ -113,6 +113,10 @@
   <!-- Form Section -->
   <div class="container my-5">
     <h2 class="mb-4 text-center">Report a Crime</h2>
+
+    <!-- Inline Alert Message -->
+    <div id="formMessage" class="alert d-none" role="alert"></div>
+
     <form id="crimeReportForm">
       <div class="mb-3">
         <label class="form-label">Reporter Identity</label><br>
@@ -229,11 +233,11 @@
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
           document.getElementById('crimeLocation').value = `Latitude: ${lat}, Longitude: ${lon}`;
-        }, function (error) {
-          alert('Unable to fetch location. Please allow location access.');
+        }, function () {
+          showMessage('Unable to fetch location. Please allow location access.', 'danger');
         });
       } else {
-        alert('Geolocation is not supported by your browser.');
+        showMessage('Geolocation is not supported by your browser.', 'danger');
       }
     });
 
@@ -254,7 +258,7 @@
       incidentPhoto.click();
     });
 
-    // Form Validation and Submission
+    // Form Validation and UI Alerts
     document.getElementById('crimeReportForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -263,28 +267,37 @@
       const type = document.getElementById('crimeType').value;
       const location = document.getElementById('crimeLocation').value.trim();
       const description = document.getElementById('crimeDescription').value.trim();
+      const formMessage = document.getElementById('formMessage');
+
+      function showMessage(message, type = 'danger') {
+        formMessage.textContent = message;
+        formMessage.className = `alert alert-${type}`;
+        setTimeout(() => {
+          formMessage.className = 'alert d-none';
+        }, 5000);
+      }
 
       if (!isAnonymous && name === '') {
-        alert('Please enter your name or select "Report Anonymously".');
+        showMessage('Please enter your name or select "Report Anonymously".');
         return;
       }
 
       if (type === '') {
-        alert('Please select a crime type.');
+        showMessage('Please select a crime type.');
         return;
       }
 
       if (location === '') {
-        alert('Please enter or fetch the location.');
+        showMessage('Please enter or fetch the location.');
         return;
       }
 
       if (description === '') {
-        alert('Please provide a description of the incident.');
+        showMessage('Please provide a description of the incident.');
         return;
       }
 
-      alert('Report submitted successfully! Police have been notified.');
+      showMessage('Report submitted successfully! Police have been notified.', 'success');
       this.reset();
       nameField.style.display = realNameOption.checked ? 'block' : 'none';
     });
