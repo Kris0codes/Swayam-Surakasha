@@ -210,7 +210,202 @@
 </head>
 
 <body>
-
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const chatbotIcon = document.getElementById('chatbotIcon');
+      const chatbotContainer = document.getElementById('chatbotContainer');
+      const chatbotClose = document.getElementById('chatbotClose');
+      const chatbotMessages = document.getElementById('chatbotMessages');
+      const chatbotInput = document.getElementById('chatbotInput');
+      const chatbotSend = document.getElementById('chatbotSend');
+      const quickOptions = document.getElementById('quickOptions');
+  
+      // Emergency contact numbers
+      const emergencyNumbers = {
+        'police': '6364575960',
+        'fire': '6364575960',
+        'ambulance': '6364575960',
+        'women': '6364575960',
+        'general': '6364575960',  // Your primary emergency number
+        'default': '6364575960'   // Default emergency number
+      };
+  
+      const responses = {
+        'hi': 'Hello! I\'m here to assist you. What can I do for you today?',
+        'hello': 'Hi there! I\'m ready to help you with any safety concerns.',
+        'hey': 'Hey! I\'m here for you. How can I assist?',
+        'help': 'I\'m here to help! I can assist with emergency situations, reporting incidents, or connecting you with authorities. What do you need?',
+        'i\'m in danger': {
+          text: 'I\'m alerting emergency services immediately! I\'ll dispatch help to your location. Stay in a safe place if possible and keep this chat open.',
+          number: emergencyNumbers.police,
+          emergency: true
+        },
+        'there is a fire': {
+          text: 'I\'ll call the fire department immediately! Please evacuate the building now. Stay low to avoid smoke inhalation. Help is on the way!',
+          number: emergencyNumbers.fire,
+          emergency: true
+        },
+        'fire': {
+          text: 'I\'ll call the fire department immediately! Please evacuate the building now. Stay low to avoid smoke inhalation. Help is on the way!',
+          number: emergencyNumbers.fire,
+          emergency: true
+        },
+        'someone is following me': {
+          text: 'I\'m alerting the police right now! Try to get to a public place with other people. I\'ll track your location and send help. Stay on this chat if possible.',
+          number: emergencyNumbers.police,
+          emergency: true
+        },
+        'following': {
+          text: 'I\'m alerting the police right now! Try to get to a public place with other people. I\'ll track your location and send help. Stay on this chat if possible.',
+          number: emergencyNumbers.police,
+          emergency: true
+        },
+        'emergency': {
+          text: 'I\'m dispatching emergency services immediately! Please stay on this chat while I coordinate help for you.',
+          number: emergencyNumbers.general,
+          emergency: true
+        },
+        'police': {
+          text: 'I\'ll connect you with the police right away! For immediate assistance, I can also dispatch emergency services to your location.',
+          number: emergencyNumbers.police,
+          emergency: true
+        },
+        'report': 'I\'ll help you file a report right now. Please provide details about the incident, and I\'ll make sure it reaches the appropriate authorities.',
+        'theft': {
+          text: 'I\'ll report this theft immediately! Please provide any details you can about what was stolen and any suspects. I\'ll alert the local police.',
+          number: emergencyNumbers.police,
+          emergency: true
+        },
+        'medical': {
+          text: 'I\'m calling medical emergency services right now! Please stay calm and I\'ll stay with you until help arrives. Is the person conscious and breathing?',
+          number: emergencyNumbers.ambulance,
+          emergency: true
+        },
+        'contact': 'I\'ll connect you with our support team immediately. You can also reach Swayam Suraksha at support@swayamsuraksha.com or our emergency number 100.',
+        'about': 'Swayam Suraksha is your safety partner, dedicated to providing immediate assistance during emergencies and connecting you with the right authorities when needed.',
+        'thanks': 'You\'re welcome! I\'m always here to help. Is there anything else you need assistance with?',
+        'thank you': 'You\'re welcome! Your safety is my priority. Is there anything else I can help you with?'
+      };
+  
+      const defaultResponse = "I'll help you with that. For immediate emergency assistance, I can alert authorities right away. For other inquiries, I can connect you with our support team at support@swayamsuraksha.com.";
+  
+      chatbotIcon.addEventListener('click', function() {
+        chatbotContainer.style.display = 'flex';
+      });
+  
+      chatbotClose.addEventListener('click', function() {
+        chatbotContainer.style.display = 'none';
+      });
+  
+      function sendMessage(message = null) {
+        const userMessage = message || chatbotInput.value.trim();
+        if (userMessage === '') return;
+  
+        addMessage(userMessage, 'user');
+        chatbotInput.value = '';
+  
+        setTimeout(() => {
+          const response = getResponse(userMessage.toLowerCase());
+          addMessage(response.text, 'bot', response.isEmergency);
+          
+          // If emergency response has a phone number, add call button
+          if (response.phoneNumber) {
+            addCallButton(response.phoneNumber);
+          }
+        }, 500);
+      }
+  
+      function getResponse(message) {
+        const emergencyKeywords = ['danger', 'emergency', 'fire', 'following', 'help me', 'sos', 'theft', 'medical'];
+        let isEmergency = emergencyKeywords.some(keyword => message.includes(keyword));
+        let phoneNumber = null;
+        let responseText = defaultResponse;
+        
+        // Check for exact matches in responses
+        for (const key in responses) {
+          if (message.includes(key)) {
+            if (typeof responses[key] === 'object') {
+              responseText = responses[key].text;
+              phoneNumber = responses[key].number;
+              isEmergency = responses[key].emergency || isEmergency;
+            } else {
+              responseText = responses[key];
+            }
+            break;
+          }
+        }
+        
+        // If it's an emergency but no specific number was found
+        if (isEmergency && !phoneNumber) {
+          phoneNumber = emergencyNumbers.default;
+        }
+  
+        return {
+          text: responseText,
+          isEmergency: isEmergency,
+          phoneNumber: phoneNumber
+        };
+      }
+  
+      function addMessage(text, sender, isEmergency = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        
+        if (sender === 'user') {
+          messageDiv.classList.add('user-message');
+        } else {
+          messageDiv.classList.add('bot-message');
+          if (isEmergency) {
+            messageDiv.classList.add('emergency-message');
+          }
+        }
+        
+        messageDiv.textContent = text;
+        chatbotMessages.appendChild(messageDiv);
+        
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }
+  
+      function addCallButton(phoneNumber) {
+        const callButtonDiv = document.createElement('div');
+        callButtonDiv.classList.add('message', 'bot-message');
+        
+        const callButton = document.createElement('button');
+        callButton.classList.add('emergency-call-btn');
+        callButton.innerHTML = '<i class="bi bi-telephone-fill"></i> Call Emergency Services Now';
+        
+        callButton.addEventListener('click', function() {
+          // This will initiate a phone call
+          window.location.href = `tel:${phoneNumber}`;
+          
+          // Add confirmation message
+          setTimeout(() => {
+            addMessage(`Calling emergency number: ${phoneNumber}`, 'bot', true);
+          }, 500);
+        });
+        
+        callButtonDiv.appendChild(callButton);
+        chatbotMessages.appendChild(callButtonDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }
+  
+      chatbotSend.addEventListener('click', () => sendMessage());
+      chatbotInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+  
+      quickOptions.addEventListener('click', function(e) {
+        if (e.target.classList.contains('quick-option')) {
+          const value = e.target.getAttribute('data-value');
+          sendMessage(value);
+        }
+      });
+      
+      // Firebase auth code remains the same
+    });
+  </script>
 <!-- Google Translate -->
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <div id="google_translate_element" style="position: absolute; top: 40px; right: 10px; z-index: 1000; background: #fff; padding: 5px; border: 1px solid black;"></div>
