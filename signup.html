@@ -171,7 +171,7 @@
   </div>
 </div>
 
-<!-- Add this modal at the bottom of the body -->
+
 <div class="modal fade verification-modal" id="verificationModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -219,9 +219,14 @@
   const db = getFirestore(app);
 
   document.getElementById('signupUserType').addEventListener('change', function() {
-    const policeFields = document.getElementById('policeFields');
-    policeFields.classList.toggle('d-none', this.value !== 'police');
-  });
+  const policeFields = document.getElementById('policeFields');
+  const isPolice = this.value === 'police';
+  policeFields.classList.toggle('d-none', !isPolice);
+
+  // Dynamically toggle required attributes
+  document.getElementById('signupPoliceStation').required = isPolice;
+  document.getElementById('signupPoliceId').required = isPolice;
+});
 
   document.getElementById('formSignup').addEventListener('submit', async function(e) {
     e.preventDefault();
