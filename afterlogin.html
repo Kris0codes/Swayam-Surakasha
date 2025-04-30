@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swayam Suraksha</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8f9fa;
+      padding-top: 70px;
+    }
+
+    .btn-green {
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 25px;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: pulse 2s infinite;
+    }
+
+    .btn-green:hover {
+      background-color: #388e3c;
+      transform: scale(1.05);
+    }
+
+    .btn-outline-success {
+      animation: pulse 2s infinite;
+    }
+
+    .btn-outline-success:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .hero-section {
+      background-color: #fdf6e3;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-img img {
+      width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .alternate-bg-cream {
+      background-color: #fdf6e3;
+    }
+
+    .alternate-bg-green {
+      background-color: #e8f5e9;
+    }
+
+    h2 {
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #0d6efd;
+    }
+
+    .card-custom {
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.4s;
+    }
+
+    .card-custom:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      background-color: #212529;
+      color: #ddd;
+      padding: 15px 0 5px;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #2e7d32;
+    }
+
+    .footer-logo {
+      height: 30px;
+      margin-right: 5px;
+    }
+
+    .footer-brand {
+      font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .compact-footer .form-control {
+      height: 30px;
+      font-size: 0.85rem;
+    }
+
+    .compact-footer .btn {
+      padding: 2px 8px;
+      font-size: 0.85rem;
+    }
+
+    .compact-footer h6 {
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+
+    .compact-footer p {
+      margin-bottom: 5px;
+      font-size: 0.85rem;
+    }
+
+    .compact-footer ul li {
+      margin-bottom: 3px;
+      font-size: 0.85rem;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      transition: background-color 0.4s;
+    }
+
+    .navbar-nav .nav-link {
+      margin-right: 20px;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #4CAF50;
+      transform: translateY(-2px);
+    }
+
+    .brand-logo {
+      height: 50px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .separator {
+      border: 0;
+      height: 3px;
+      background: #333;
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+
+    .fixed-icons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .fixed-icons a {
+      display: block;
+      margin-bottom: 10px;
+      background-color: #25D366;
+      padding: 15px;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .fixed-icons a:hover {
+      transform: scale(1.1);
+    }
+
+    .fixed-icons a.call {
+      background-color: #28a745;
+    }
+
+    .chatbot-icon {
+      position: fixed;
+      bottom: 200px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #0d6efd;
+      padding: 15px;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .chatbot-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .chatbot-container {
+      position: fixed;
+      bottom: 200px;
+      right: 20px;
+      width: 350px;
+      height: 450px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+      z-index: 1001;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chatbot-header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chatbot-close {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .chatbot-messages {
+      flex-grow: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 15px;
+    }
+
+    .user-message {
+      background-color: #e8f5e9;
+      margin-left: auto;
+      border-bottom-right-radius: 5px;
+    }
+
+    .bot-message {
+      background-color: #f1f1f1;
+      margin-right: auto;
+      border-bottom-left-radius: 5px;
+    }
+
+    .emergency-message {
+      background-color: #ffebee;
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    .chatbot-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #eee;
+      flex-direction: column;
+    }
+
+    .chatbot-input-row {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .chatbot-input input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      margin-right: 10px;
+    }
+
+    .chatbot-input button {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .quick-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .quick-option {
+      background-color: #e3f2fd;
+      border: 1px solid #bbdefb;
+      color: #0d6efd;
+      border-radius: 15px;
+      padding: 5px 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quick-option:hover {
+      background-color: #bbdefb;
+    }
+
+    .quick-option.emergency {
+      background-color: #ffebee;
+      border-color: #ffcdd2;
+      color: #d32f2f;
+    }
+
+    .quick-option.emergency:hover {
+      background-color: #ffcdd2;
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+      width: 5%;
+      opacity: 0.8;
+    }
+
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+      background-color: rgba(0,0,0,0.3);
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    /* New chatbot message options styles */
+    .chatbot-messages .quick-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+  
+    .chatbot-messages .quick-option {
+      background-color: #e3f2fd;
+      border: 1px solid #bbdefb;
+      color: #0d6efd;
+      border-radius: 15px;
+      padding: 5px 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+  
+    .chatbot-messages .quick-option.emergency {
+      background-color: #ffebee;
+      border-color: #ffcdd2;
+      color: #d32f2f;
+    }
+  
+    .chatbot-messages .quick-option:hover {
+      background-color: #bbdefb;
+    }
+  
+    .chatbot-messages .quick-option.emergency:hover {
+      background-color: #ffcdd2;
+    }
+
+    @media (max-width: 768px) {
+      .hero-img img {
+        width: 100%;
+      }
+      
+      .chatbot-container {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+      }
+      .btn-outline-danger {
+        animation: pulse 2s infinite;
+        border-color: #dc3545;
+        color: #dc3545;
+      }
+
+      .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: white;
+        transform: scale(1.05);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<div id="google_translate_element" style="
+  position: fixed;
+  top: 80px;
+  right: 10px;
+  z-index: 9999;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'hi,ta,te,bn,ml,kn,mr,gu,pa,or,en',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="main-logo.png" alt="Logo" class="brand-logo">
+      <div class="brand-text">
+        <strong>Swayam</strong> <br>Suraksha
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i> Profile
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+            <li><a class="dropdown-item" href="dashboard.html">Dashboard</a></li>
+            <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+          </ul>
+        </li> 
+        
+        <li class="nav-item" id="login-btn">
+          <a href="signin.html" class="btn btn-green me-2">Login</a>
+        </li>
+        <li class="nav-item" id="register-btn">
+          <a href="signup.html" class="btn btn-outline-success rounded-pill">Register</a>
+        </li>
+        <li class="nav-item" id="logout-btn" style="display: none;">
+          <a href="signin.html" class="btn btn-outline-danger rounded-pill" id="logout-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero-section">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>Welcome to Swayam Suraksha</h1>
+      <p class="lead">Building Trust. Ensuring Safety.</p>
+      <a href="report.html" class="btn btn-green mt-3">Report Now</a>
+    </div>
+    <div class="hero-img">
+      <img src="pol.jpg" alt="Safety Hero">
+    </div>
+  </div>
+</section>
+
+<section class="alternate-bg-green">
+  <div class="container">
+    <h2 class="text-center">Past Activities</h2>
+    <div id="activitiesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="act1.jpg" alt="Activity 1" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Ms. Sharma reported a theft</h5>
+              <p>Thanks to her prompt action, the robber was caught within hours!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="act2.png" alt="Activity 2" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Mr. Arjun assisted in a missing child case</h5>
+              <p>The child was safely reunited with their family.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="act3.jpg" alt="Activity 3" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Mr. Raj helped prevent a building fire</h5>
+              <p>Saved multiple lives by prompt action.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="alternate-bg-cream">
+  <div class="container">
+    <h2 class="text-center">Local News</h2>
+    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="news1.jpg" alt="News 1" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>New CCTV cameras installed</h5>
+              <p>Increasing public safety and crime prevention measures.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="news2.jpg" alt="News 2" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Local police conduct workshop</h5>
+              <p>Hundreds of residents attend and learn self-defense techniques.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="card-custom p-3 d-flex flex-row">
+            <img src="news3.jpg" alt="News 3" class="img-fluid" style="width: 120px; height: 120px; object-fit: cover; border-radius: 15px;">
+            <div class="ms-3">
+              <h5>Fire Protection Drill</h5>
+              <p>Residents trained in fire safety techniques.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="fixed-icons">
+  <a href="tel:100" class="call"><i class="bi bi-telephone-fill"></i></a>
+  <a href="https://wa.me/911234567890" target="_blank"><i class="bi bi-whatsapp"></i></a>
+</div>
+
+<div class="chatbot-icon" id="chatbotIcon">
+  <i class="bi bi-chat-dots-fill"></i>
+</div>
+
+<div class="chatbot-container" id="chatbotContainer">
+  <div class="chatbot-header">
+    <h5 class="m-0">Swayam Suraksha Assistant</h5>
+    <span class="chatbot-close" id="chatbotClose">&times;</span>
+  </div>
+  <div class="chatbot-messages" id="chatbotMessages">
+    <div class="message bot-message">
+      Hello! I'm your Swayam Suraksha assistant. How can I help you today?
+    </div>
+  </div>
+  <div class="chatbot-input">
+    <div class="quick-options" id="quickOptions">
+      <button class="quick-option emergency" data-value="fire">🚒 Fire Emergency</button>
+      <button class="quick-option emergency" data-value="police">🚨 Police Emergency</button>
+      <button class="quick-option emergency" data-value="medical">🚑 Medical Emergency</button>
+      <button class="quick-option emergency" data-value="women">👩 Women's Helpline</button>
+      <button class="quick-option emergency" data-value="child">🧒 Child Helpline</button>
+      <button class="quick-option" data-value="report">📝 Report Incident</button>
+    </div>
+    <div class="chatbot-input-row">
+      <input type="text" id="chatbotInput" placeholder="Type your message...">
+      <button id="chatbotSend">Send</button>
+    </div>
+  </div>
+</div>
+
+<footer class="text-white bg-dark pt-2 pb-1 compact-footer">
+  <div class="container">
+    <div class="row text-start align-items-center">
+      <div class="col-md-3 mb-2 d-flex align-items-center">
+        <img src="main-logo.png" alt="Logo" width="30" height="30" class="me-2">
+        <span class="fs-6 fw-bold">Swayam Suraksha</span>
+      </div>
+
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Stay Updated</h6>
+        <div class="d-flex">
+          <input type="email" class="form-control form-control-sm me-1" placeholder="Email">
+          <button class="btn btn-success btn-sm">OK</button>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Contact</h6>
+        <p class="mb-0">support@swayamsuraksha.com</p>
+        <p class="mb-0">Emergency: 100</p>
+      </div>
+
+      <div class="col-md-3 mb-2">
+        <h6 class="mb-1">Quick Links</h6>
+        <div class="d-flex flex-wrap">
+          <a href="report.html" class="text-success me-2">Report Crime</a>
+          <a href="about.html" class="text-success me-2">About Us</a>
+          <a href="map.html" class="text-success">Crime Map</a>
+        </div>
+      </div>
+    </div>
+    <hr class="border-secondary my-1">
+    <div class="text-center pb-1">
+      <small>© Swayam Suraksha all rights reserved 2025</small>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+    const quickOptions = document.getElementById('quickOptions');
+
+    const emergencyNumbers = {
+      'police': { number: '100', name: 'Police' },
+      'fire': { number: '101', name: 'Fire Department' },
+      'medical': { number: '102', name: 'Medical Emergency' },
+      'women': { number: '1091', name: "Women's Helpline" },
+      'child': { number: '1098', name: "Child Helpline" }
+    };
+
+    const responses = {
+      'hi': 'Hello! I\'m here to assist you. What can I do for you today?',
+      'hello': 'Hi there! I\'m ready to help you with any safety concerns.',
+      'hey': 'Hey! I\'m here for you. How can I assist?',
+      'help': 'I\'m here to help! I can assist with emergency situations, reporting incidents, or connecting you with authorities. What do you need?',
+      'i\'m in danger': {
+        text: 'I\'m alerting emergency services immediately! Would you like me to call the police (100) now?',
+        options: [
+          { text: 'Yes, call police (100)', action: 'call', number: '100' },
+          { text: 'No, just report', action: 'report' }
+        ]
+      },
+      'there is a fire': {
+        text: 'This is an emergency! Should I call the fire department (101) right now?',
+        options: [
+          { text: 'Yes, call fire dept (101)', action: 'call', number: '101' },
+          { text: 'No, just report', action: 'report' }
+        ]
+      },
+      'fire': {
+        text: 'This is an emergency! Should I call the fire department (101) right now?',
+        options: [
+          { text: 'Yes, call fire dept (101)', action: 'call', number: '101' },
+          { text: 'No, just report', action: 'report' }
+        ]
+      },
+      'someone is following me': {
+        text: 'This sounds dangerous! Should I call the police (100) immediately?',
+        options: [
+          { text: 'Yes, call police (100)', action: 'call', number: '100' },
+          { text: 'No, just report', action: 'report' }
+        ]
+      },
+      'following': {
+        text: 'This sounds dangerous! Should I call the police (100) immediately?',
+        options: [
+          { text: 'Yes, call police (100)', action: 'call', number: '100' },
+          { text: 'No, just report', action: 'report' }
+        ]
+      },
+      'emergency': {
+        text: 'I can connect you with emergency services immediately. Which service do you need?',
+        options: [
+          { text: 'Police (100)', action: 'call', number: '100' },
+          { text: 'Fire (101)', action: 'call', number: '101' },
+          { text: 'Medical (102)', action: 'call', number: '102' },
+          { text: "Women's Helpline (1091)", action: 'call', number: '1091' }
+        ]
+      },
+      'police': {
+        text: 'Should I connect you with the police (100) right now?',
+        options: [
+          { text: 'Yes, call police (100)', action: 'call', number: '100' },
+          { text: 'No, just report', action: 'report' }
+        ]
+      },
+      'report': 'I\'ll help you file a report right now. Please provide details about the incident, and I\'ll make sure it reaches the appropriate authorities.',
+      'theft': {
+        text: 'This is serious! Should I call the police (100) to report the theft?',
+        options: [
+          { text: 'Yes, call police (100)', action: 'call', number: '100' },
+          { text: 'No, just report', action: 'report' }
+        ]
+      },
+      'medical': {
+        text: 'This is a medical emergency! Should I call for an ambulance (102) now?',
+        options: [
+          { text: 'Yes, call ambulance (102)', action: 'call', number: '102' },
+          { text: 'No, just report', action: 'report' }
+        ]
+      },
+      'contact': 'I\'ll connect you with our support team immediately. You can also reach Swayam Suraksha at support@swayamsuraksha.com or our emergency number 100.',
+      'about': 'Swayam Suraksha is your safety partner, dedicated to providing immediate assistance during emergencies and connecting you with the right authorities when needed.',
+      'thanks': 'You\'re welcome! I\'m always here to help. Is there anything else you need assistance with?',
+      'thank you': 'You\'re welcome! Your safety is my priority. Is there anything else I can help you with?'
+    };
+
+    const defaultResponse = {
+      text: "I'll help you with that. For immediate emergency assistance, I can alert authorities right away. Would you like me to connect you with emergency services?",
+      options: [
+        { text: 'Police (100)', action: 'call', number: '100' },
+        { text: 'Fire (101)', action: 'call', number: '101' },
+        { text: 'Medical (102)', action: 'call', number: '102' },
+        { text: "No, just continue chatting", action: 'none' }
+      ]
+    };
+
+    chatbotIcon.addEventListener('click', function() {
+      chatbotContainer.style.display = 'flex';
+    });
+
+    chatbotClose.addEventListener('click', function() {
+      chatbotContainer.style.display = 'none';
+    });
+
+    function sendMessage(message = null) {
+      const userMessage = message || chatbotInput.value.trim();
+      if (userMessage === '') return;
+
+      addMessage(userMessage, 'user');
+      chatbotInput.value = '';
+
+      setTimeout(() => {
+        const response = getResponse(userMessage.toLowerCase());
+        if (typeof response === 'string') {
+          addMessage(response, 'bot');
+        } else {
+          addMessage(response.text, 'bot', true, response.options);
+        }
+      }, 500);
+    }
+
+    function getResponse(message) {
+      // Check for direct emergency number requests
+      for (const key in emergencyNumbers) {
+        if (message.includes(key)) {
+          return {
+            text: `I can connect you with ${emergencyNumbers[key].name} (${emergencyNumbers[key].number}) immediately. Should I call them now?`,
+            options: [
+              { 
+                text: `Yes, call ${emergencyNumbers[key].name} (${emergencyNumbers[key].number})`, 
+                action: 'call', 
+                number: emergencyNumbers[key].number 
+              },
+              { text: 'No, just report', action: 'report' }
+            ]
+          };
+        }
+      }
+      
+      for (const key in responses) {
+        if (message.includes(key)) {
+          return responses[key];
+        }
+      }
+
+      return defaultResponse;
+    }
+
+    function addMessage(text, sender, isEmergency = false, options = null) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message');
+      
+      if (sender === 'user') {
+        messageDiv.classList.add('user-message');
+        messageDiv.textContent = text;
+      } else {
+        messageDiv.classList.add('bot-message');
+        if (isEmergency) {
+          messageDiv.classList.add('emergency-message');
+        }
+        
+        // Create message content
+        const messageContent = document.createElement('div');
+        messageContent.textContent = text;
+        messageDiv.appendChild(messageContent);
+        
+        // Add options if available
+        if (options && options.length > 0) {
+          const optionsDiv = document.createElement('div');
+          optionsDiv.className = 'quick-options mt-2';
+          
+          options.forEach(option => {
+            const optionBtn = document.createElement('button');
+            optionBtn.className = 'quick-option';
+            if (option.action === 'call') {
+              optionBtn.classList.add('emergency');
+            }
+            optionBtn.textContent = option.text;
+            optionBtn.dataset.action = option.action;
+            if (option.number) {
+              optionBtn.dataset.number = option.number;
+            }
+            optionsDiv.appendChild(optionBtn);
+          });
+          
+          messageDiv.appendChild(optionsDiv);
+        }
+      }
+      
+      chatbotMessages.appendChild(messageDiv);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    // Add event listener for dynamically created option buttons
+    chatbotMessages.addEventListener('click', function(e) {
+      if (e.target.classList.contains('quick-option')) {
+        const action = e.target.dataset.action;
+        const number = e.target.dataset.number;
+        
+        if (action === 'call' && number) {
+          addMessage(`Calling ${number}...`, 'user');
+          setTimeout(() => {
+            addMessage(`Connected with emergency services at ${number}. Please describe your emergency.`, 'bot', true);
+            // In a real app, this would actually initiate a call
+            // window.location.href = `tel:${number}`;
+            
+            // For demo purposes, we'll just show a message
+            setTimeout(() => {
+              addMessage(`Emergency call to ${number} completed. Help is on the way!`, 'bot', true);
+            }, 2000);
+          }, 1000);
+        } else if (action === 'report') {
+          addMessage('Please describe what happened so I can file a report.', 'bot');
+        }
+      }
+    });
+
+    chatbotSend.addEventListener('click', () => sendMessage());
+    chatbotInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    quickOptions.addEventListener('click', function(e) {
+      if (e.target.classList.contains('quick-option')) {
+        const value = e.target.getAttribute('data-value');
+        sendMessage(value);
+      }
+    });
+
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          document.getElementById("login-btn").style.display = "none";
+          document.getElementById("register-btn").style.display = "none";
+          document.getElementById("logout-btn").style.display = "block";
+        } else {
+          document.getElementById("login-btn").style.display = "block";
+          document.getElementById("register-btn").style.display = "block";
+          document.getElementById("logout-btn").style.display = "none";
+        }
+      });
+    }
+  });
+</script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyBxc2hgvEXwSWJexgECSX4ohbPWfTEFcxU",
+    authDomain: "swayam-surakasha.firebaseapp.com",
+    projectId: "swayam-surakasha",
+    storageBucket: "swayam-surakasha.firebasestorage.app",
+    messagingSenderId: "906502359189",
+    appId: "1:906502359189:web:8b737c144ebcd2d650339c",
+    measurementId: "G-2KT69QEK5X"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  
+  window.firebase = { auth: () => auth };
+  
+  // Inside the firebase auth state change handler
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      document.getElementById("login-btn").style.display = "none";
+      document.getElementById("register-btn").style.display = "none";
+      document.getElementById("logout-btn").style.display = "block";
+    } else {
+      document.getElementById("login-btn").style.display = "block";
+      document.getElementById("register-btn").style.display = "block";
+      document.getElementById("logout-btn").style.display = "none";
+    }
+  });
+
+  // Add logout functionality
+  document.getElementById('logout-link')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful
+      window.location.href = 'index.html'; // Redirect to home page
+    }).catch((error) => {
+      console.error('Logout error:', error);
+    });
+  });
+</script>
+</body>
+</html>
