@@ -1,116 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Report Crime | Swayam Suraksha</title>
-  
+
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  
-  <!-- Leaflet CSS for maps -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
+      background-color: #f0f4f3;
       padding-top: 70px;
-      color: #333;
     }
-    
-    .card {
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      border: none;
-    }
-    
-    .form-control, .form-select {
-      border-radius: 10px;
-      padding: 12px;
-      border: 1px solid #ddd;
-      transition: all 0.3s;
-    }
-    
-    .form-control:focus, .form-select:focus {
-      border-color: #4CAF50;
-      box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
-    }
-    
-    .btn-success {
-      background-color: #4CAF50;
-      border-color: #4CAF50;
-      border-radius: 10px;
-      padding: 12px;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    
-    .btn-success:hover {
-      background-color: #388e3c;
-      border-color: #388e3c;
-      transform: translateY(-2px);
-    }
-    
-    .btn-outline-success {
-      color: #4CAF50;
-      border-color: #4CAF50;
-      border-radius: 10px;
-      transition: all 0.3s;
-    }
-    
-    .btn-outline-success:hover {
-      background-color: #4CAF50;
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    .btn-outline-primary, .btn-outline-secondary {
-      border-radius: 10px;
-      padding: 10px 15px;
-      transition: all 0.3s;
-    }
-    
-    .btn-outline-primary:hover, .btn-outline-secondary:hover {
-      transform: translateY(-2px);
-    }
-    
-    #map {
-      height: 300px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      display: none;
-    }
-    
-    .section-title {
-      position: relative;
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-      color: #333;
-      font-weight: 600;
-    }
-    
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background-color: #4CAF50;
-    }
-    
+
     footer {
       background-color: #212529;
       color: #ddd;
-      padding: 40px 0 15px;
-      margin-top: 50px;
+      padding: 40px 0;
+      margin-bottom: 0px;
     }
 
     footer a {
@@ -123,9 +37,21 @@
       color: #2e7d32;
     }
 
+    .footer-logo {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .footer-brand {
+      font-weight: bold;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+
     .navbar {
       background-color: #ffffff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: background-color 0.4s;
     }
 
     .navbar-nav .nav-link {
@@ -145,66 +71,20 @@
       width: auto;
       margin-right: 10px;
     }
-    
+
     .separator {
       border: 0;
-      height: 2px;
-      background: linear-gradient(to right, transparent, #4CAF50, transparent);
-      margin: 30px 0;
-    }
-    
-    .form-label {
-      font-weight: 500;
-      margin-bottom: 8px;
-      color: #555;
-    }
-    
-    .form-text {
-      color: #6c757d;
-      font-size: 0.85rem;
-    }
-    
-    .progress {
-      height: 10px;
-      border-radius: 5px;
-    }
-    
-    .alert {
-      border-radius: 10px;
-    }
-    
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255,255,255,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      display: none;
-    }
-    
-    .spinner-border {
-      width: 3rem;
-      height: 3rem;
+      height: 3px;
+      background: #333;
+      margin-top: 60px;
+      margin-bottom: 40px;
     }
   </style>
 </head>
 
-
-
 <body>
-  <!-- Loading Overlay -->
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="spinner-border text-success" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
 
-   <!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -216,11 +96,11 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-  
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="report.html">Report a Crime</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="report.html">Report a Crime</a></li>
           <li class="nav-item"><a class="nav-link" href="map.html">Crime Map</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
         </ul>
@@ -228,9 +108,10 @@
     </div>
   </nav>
 
-  <!-- Main Form Content -->
+  <hr class="separator" />
+
+  <!-- Form Section -->
   <div class="container my-5">
-<<<<<<< HEAD
     <h2 class="mb-4 text-center">Report a Crime</h2>
 
     <!-- Inline Alert Message -->
@@ -246,216 +127,108 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="identityOption" id="anonymousOption" value="anonymous">
           <label class="form-check-label" for="anonymousOption">Report Anonymously</label>
-=======
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="card">
-          <div class="card-body p-4 p-md-5">
-            <h2 class="text-center mb-4">Report a Crime</h2>
-            <p class="text-center text-muted mb-4">Your information helps us keep our community safe</p>
-            
-            <div class="alert alert-success" id="successAlert" style="display: none;">
-              Report submitted successfully! Thank you for helping keep our community safe.
-            </div>
-            
-            <div class="alert alert-danger" id="errorAlert" style="display: none;">
-              There was an error submitting your report. Please try again.
-            </div>
-            
-            <form id="crimeReportForm">
-              <!-- Reporter Identity Section -->
-              <div class="mb-4">
-                <h5 class="section-title">Reporter Information</h5>
-                
-                <div class="mb-3">
-                  <label class="form-label">Reporter Identity</label>
-                  <div class="d-flex gap-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="identityOption" id="realNameOption" value="name" checked>
-                      <label class="form-check-label" for="realNameOption">Use My Name</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="identityOption" id="anonymousOption" value="anonymous">
-                      <label class="form-check-label" for="anonymousOption">Report Anonymously</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mb-3" id="nameField">
-                  <label for="reporterName" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" id="reporterName" placeholder="Enter your name">
-                  <div class="form-text">Your name will only be visible to authorized personnel.</div>
-                </div>
-              </div>
-              
-              <!-- Incident Details Section -->
-              <div class="mb-4">
-                <h5 class="section-title">Incident Details</h5>
-                
-                <div class="mb-3">
-                  <label for="crimeType" class="form-label">Type of Crime</label>
-                  <select class="form-select" id="crimeType" required>
-                    <option value="" selected disabled>Select crime type</option>
-                    <option value="Robbery">Robbery</option>
-                    <option value="Assault">Assault</option>
-                    <option value="Burglary">Burglary</option>
-                    <option value="Vandalism">Vandalism</option>
-                    <option value="Theft">Theft</option>
-                    <option value="Harassment">Harassment</option>
-                    <option value="Suspicious Activity">Suspicious Activity</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                <div class="mb-3">
-                  <label for="crimeDescription" class="form-label">Description</label>
-                  <textarea class="form-control" id="crimeDescription" rows="4" placeholder="Describe what happened in detail" required></textarea>
-                  <div class="form-text">Include any details that might help identify suspects or understand the situation.</div>
-                </div>
-              </div>
-              
-              <!-- Location Section -->
-              <div class="mb-4">
-                <h5 class="section-title">Location</h5>
-                
-                <div class="mb-3">
-                  <label for="crimeLocation" class="form-label">Address</label>
-                  <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="crimeLocation" placeholder="Enter location manually" required>
-                    <button class="btn btn-outline-success" type="button" id="getLocationBtn">
-                      <i class="fas fa-map-marker-alt me-2"></i>Use My Location
-                    </button>
-                  </div>
-                  <div class="form-text">Click "Use My Location" to automatically detect your current location.</div>
-                </div>
-                
-                <!-- Map will appear here when location is detected -->
-                <div id="map"></div>
-                
-                <!-- Hidden fields to store coordinates -->
-                <input type="hidden" id="latitude" name="latitude">
-                <input type="hidden" id="longitude" name="longitude">
-              </div>
-              
-              <!-- Evidence Section -->
-              <div class="mb-4">
-                <h5 class="section-title">Evidence</h5>
-                
-                <div class="mb-3">
-                  <label for="photoLink" class="form-label">Google Drive Link to Photo (optional)</label>
-                  <input type="url" class="form-control" id="photoLink" placeholder="Paste Google Drive shareable link here">
-                  <div class="form-text">Upload your photo to Google Drive and share it with "Anyone with the link" permission, then paste the link here.</div>
-                </div>
-              </div>
-              
-              <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success btn-lg">
-                  <i class="fas fa-paper-plane me-2"></i>Submit Report
-                </button>
-              </div>
-            </form>
-          </div>
->>>>>>> 2b999c45761e4bd804417a348133a51b146df3eb
         </div>
       </div>
-    </div>
+
+      <div class="mb-3" id="nameField">
+        <label for="reporterName" class="form-label">Your Name</label>
+        <input type="text" class="form-control" id="reporterName" placeholder="Enter your name">
+      </div>
+
+      <div class="mb-3">
+        <label for="crimeType" class="form-label">Type of Crime</label>
+        <select class="form-select" id="crimeType">
+          <option value="" selected>Select crime type</option>
+          <option>Robbery</option>
+          <option>Assault</option>
+          <option>Burglary</option>
+          <option>Vandalism</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="crimeLocation" class="form-label">Location</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="crimeLocation" placeholder="Enter location manually or use button">
+          <button class="btn btn-outline-success" type="button" id="getLocationBtn">Use My Location</button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="crimeDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="crimeDescription" rows="4" placeholder="Describe the incident"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Upload Photo (optional)</label><br>
+        <button type="button" class="btn btn-outline-primary me-2 mb-2" id="uploadFromCamera">Take Photo</button>
+        <button type="button" class="btn btn-outline-secondary mb-2" id="uploadFromFiles">Choose from Files</button>
+        <input type="file" id="incidentPhoto" style="display:none;">
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Submit Report</button>
+    </form>
   </div>
 
-  <footer class="text-white bg-dark pt-4 pb-2">
+  <!-- Footer -->
+  <footer class="text-white bg-dark pt-2 pb-1 compact-footer">
     <div class="container">
       <div class="row text-start align-items-center">
-        <div class="col-md-3 mb-3 d-flex align-items-center">
-          <img src="main-logo.png" alt="Logo" width="40" height="40" class="me-2">
-          <span class="fs-5 fw-bold">Swayam Suraksha</span>
+        <div class="col-md-3 mb-2 d-flex align-items-center">
+          <img src="main-logo.png" alt="Logo" width="30" height="30" class="me-2">
+          <span class="fs-6 fw-bold">Swayam Suraksha</span>
         </div>
 
-        <div class="col-md-3 mb-3">
-          <h6 class="mb-2">Stay Updated</h6>
+        <div class="col-md-3 mb-2">
+          <h6 class="mb-1">Stay Updated</h6>
           <div class="d-flex">
             <input type="email" class="form-control form-control-sm me-1" placeholder="Email">
             <button class="btn btn-success btn-sm">OK</button>
           </div>
         </div>
 
-        <div class="col-md-3 mb-3">
-          <h6 class="mb-2">Contact</h6>
-          <p class="mb-1">support@swayamsuraksha.com</p>
+        <div class="col-md-3 mb-2">
+          <h6 class="mb-1">Contact</h6>
+          <p class="mb-0">support@swayamsuraksha.com</p>
           <p class="mb-0">Emergency: 100</p>
         </div>
 
-        <div class="col-md-3 mb-3">
-          <h6 class="mb-2">Quick Links</h6>
+        <div class="col-md-3 mb-2">
+          <h6 class="mb-1">Quick Links</h6>
           <div class="d-flex flex-wrap">
-            <a href="report.html" class="text-success me-3">Report Crime</a>
-            <a href="about.html" class="text-success me-3">About Us</a>
+            <a href="report.html" class="text-success me-2">Report Crime</a>
+            <a href="about.html" class="text-success me-2">About Us</a>
             <a href="map.html" class="text-success">Crime Map</a>
           </div>
         </div>
       </div>
-      <hr class="border-secondary my-2">
+      <hr class="border-secondary my-1">
       <div class="text-center pb-1">
         <small>© Swayam Suraksha all rights reserved 2025</small>
       </div>
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Leaflet JS for maps -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  
-  <!-- Firebase -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBxc2hgvEXwSWJexgECSX4ohbPWfTEFcxU",
-      authDomain: "swayam-surakasha.firebaseapp.com",
-      projectId: "swayam-surakasha",
-      storageBucket: "swayam-surakasha.firebasestorage.app",
-      messagingSenderId: "906502359189",
-      appId: "1:906502359189:web:8b737c144ebcd2d650339c",
-      measurementId: "G-2KT69QEK5X"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    // DOM Elements
-    const form = document.getElementById('crimeReportForm');
+  <script>
+    // Toggle Name Field
     const realNameOption = document.getElementById('realNameOption');
     const anonymousOption = document.getElementById('anonymousOption');
     const nameField = document.getElementById('nameField');
-    const getLocationBtn = document.getElementById('getLocationBtn');
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    const successAlert = document.getElementById('successAlert');
-    const errorAlert = document.getElementById('errorAlert');
-    
-    // Map variables
-    let map;
-    let marker;
 
-    // Show/hide name field based on identity option
-    anonymousOption.addEventListener('change', function() {
-      if (this.checked) {
-        nameField.style.display = 'none';
-      }
+    realNameOption.addEventListener('change', () => {
+      nameField.style.display = 'block';
     });
 
-    realNameOption.addEventListener('change', function() {
-      if (this.checked) {
-        nameField.style.display = 'block';
-      }
+    anonymousOption.addEventListener('change', () => {
+      nameField.style.display = 'none';
     });
 
-    // Get location button
-    getLocationBtn.addEventListener('click', function() {
-      showLoading();
-      
+    // Get Live Location
+    document.getElementById('getLocationBtn').addEventListener('click', function () {
       if (navigator.geolocation) {
-<<<<<<< HEAD
         navigator.geolocation.getCurrentPosition(function (position) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
@@ -465,80 +238,20 @@
         });
       } else {
         showMessage('Geolocation is not supported by your browser.', 'danger');
-=======
-        navigator.geolocation.getCurrentPosition(
-          position => {
-            const { latitude, longitude } = position.coords;
-            document.getElementById('latitude').value = latitude;
-            document.getElementById('longitude').value = longitude;
-            
-            // Initialize map if it doesn't exist
-            initMap(latitude, longitude);
-            
-            // Reverse geocode to get address
-            reverseGeocode(latitude, longitude);
-            
-            hideLoading();
-          },
-          error => {
-            console.error("Error getting location:", error);
-            alert("Could not get your location. Please enter it manually.");
-            hideLoading();
-          }
-        );
-      } else {
-        alert("Geolocation is not supported by this browser.");
-        hideLoading();
->>>>>>> 2b999c45761e4bd804417a348133a51b146df3eb
       }
     });
 
-    // Initialize map
-    function initMap(lat, lng) {
-      const mapContainer = document.getElementById('map');
-      mapContainer.style.display = 'block';
-      
-      if (!map) {
-        map = L.map('map').setView([lat, lng], 15);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-      } else {
-        map.setView([lat, lng], 15);
-      }
-      
-      // Add or update marker
-      if (marker) {
-        marker.setLatLng([lat, lng]);
-      } else {
-        marker = L.marker([lat, lng], {draggable: true}).addTo(map);
-        
-        // Update coordinates when marker is dragged
-        marker.on('dragend', function(e) {
-          const position = marker.getLatLng();
-          document.getElementById('latitude').value = position.lat;
-          document.getElementById('longitude').value = position.lng;
-          reverseGeocode(position.lat, position.lng);
-        });
-      }
-    }
+    // Photo Upload Options
+    const uploadFromCamera = document.getElementById('uploadFromCamera');
+    const uploadFromFiles = document.getElementById('uploadFromFiles');
+    const incidentPhoto = document.getElementById('incidentPhoto');
 
-    // Reverse geocode to get address from coordinates
-    function reverseGeocode(lat, lng) {
-      fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.display_name) {
-            document.getElementById('crimeLocation').value = data.display_name;
-          }
-        })
-        .catch(error => {
-          console.error("Error reverse geocoding:", error);
-        });
-    }
+    uploadFromCamera.addEventListener('click', () => {
+      incidentPhoto.setAttribute('accept', 'image/*');
+      incidentPhoto.setAttribute('capture', 'environment');
+      incidentPhoto.click();
+    });
 
-<<<<<<< HEAD
     uploadFromFiles.addEventListener('click', () => {
       incidentPhoto.removeAttribute('capture');
       incidentPhoto.setAttribute('accept', 'image/*');
@@ -587,107 +300,7 @@
       showMessage('Report submitted successfully! Police have been notified.', 'success');
       this.reset();
       nameField.style.display = realNameOption.checked ? 'block' : 'none';
-=======
-    // Form submission
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      // Validate form
-      if (!validateForm()) {
-        return;
-      }
-      
-      showLoading();
-      
-      try {
-        // Get form data
-        const identity = document.querySelector('input[name="identityOption"]:checked').value;
-        const reporterName = identity === 'anonymous' ? 'Anonymous' : document.getElementById('reporterName').value;
-        const crimeType = document.getElementById('crimeType').value;
-        const location = document.getElementById('crimeLocation').value;
-        const description = document.getElementById('crimeDescription').value;
-        const latitude = document.getElementById('latitude').value || 0;
-        const longitude = document.getElementById('longitude').value || 0;
-        const photoLink = document.getElementById('photoLink').value;
-        
-        // Add document to Firestore
-        await addDoc(collection(db, "reports"), {
-          name: reporterName,
-          anonymous: identity === 'anonymous',
-          incidentType: crimeType,
-          description: description,
-          location: {
-            address: location,
-            latitude: parseFloat(latitude),
-            longitude: parseFloat(longitude)
-          },
-          photoLink: photoLink || null,
-          status: 'pending',
-          timestamp: serverTimestamp()
-        });
-        
-        // Show success message
-        successAlert.style.display = 'block';
-        errorAlert.style.display = 'none';
-        form.reset();
-        
-        if (map) {
-          document.getElementById('map').style.display = 'none';
-        }
-        
-      } catch (error) {
-        console.error("Error submitting report:", error);
-        errorAlert.textContent = `Error submitting report: ${error.message}`;
-        errorAlert.style.display = 'block';
-      } finally {
-        hideLoading();
-      }
->>>>>>> 2b999c45761e4bd804417a348133a51b146df3eb
     });
-
-    // Form validation
-    function validateForm() {
-      const requiredFields = {
-        crimeType: "Please select a crime type",
-        crimeDescription: "Please describe the incident",
-        crimeLocation: "Please provide a location"
-      };
-
-      for (const [fieldId, errorMsg] of Object.entries(requiredFields)) {
-        const field = document.getElementById(fieldId);
-        if (!field.value.trim()) {
-          alert(errorMsg);
-          field.focus();
-          return false;
-        }
-      }
-
-      // Validate location coordinates if using geolocation
-      if (document.getElementById('latitude').value && 
-          isNaN(parseFloat(document.getElementById('latitude').value))) {
-        alert("Invalid location coordinates");
-        return false;
-      }
-
-      // Validate Google Drive link format if provided
-      const photoLink = document.getElementById('photoLink').value;
-      if (photoLink && !photoLink.startsWith('https://drive.google.com/')) {
-        alert("Please provide a valid Google Drive link");
-        return false;
-      }
-
-      return true;
-    }
-
-    // Show loading overlay
-    function showLoading() {
-      loadingOverlay.style.display = 'flex';
-    }
-
-    // Hide loading overlay
-    function hideLoading() {
-      loadingOverlay.style.display = 'none';
-    }
   </script>
 </body>
 </html>
