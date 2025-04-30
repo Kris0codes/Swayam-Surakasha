@@ -13,42 +13,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    html, body {
-      height: 100%;
-    }
-    
     body {
       font-family: 'Poppins', sans-serif;
-      background-image: url('Background.jpg');
+      background-image: url('bgg.png');
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
     }
 
     .overlay {
       background-color: rgba(255, 255, 255, 0.9); /* Light white overlay for readability */
-      flex: 1 0 auto;
+      min-height: 100vh;
       padding-top: 70px; /* to account for fixed navbar */
-      display: flex;
-      flex-direction: column;
     }
 
-    .content-wrapper {
-      flex: 1 0 auto;
-    }
-
-    /* Updated Footer styles to match the first code */
     footer {
       background-color: #212529;
       color: #ddd;
-      padding: 15px 0 5px;
-      font-size: 0.9rem;
-      flex-shrink: 0;
+      padding: 40px 0;
     }
 
     footer a {
@@ -62,48 +47,15 @@
     }
 
     .footer-logo {
-      height: 30px;
-      margin-right: 5px;
+      height: 50px;
+      margin-right: 10px;
     }
 
     .footer-brand {
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.2rem;
       display: flex;
       align-items: center;
-    }
-
-    .compact-footer .form-control {
-      height: 30px;
-      font-size: 0.85rem;
-    }
-
-    .compact-footer .btn {
-      padding: 2px 8px;
-      font-size: 0.85rem;
-    }
-
-    .compact-footer h6 {
-      font-size: 0.95rem;
-      margin-bottom: 5px;
-    }
-
-    .compact-footer p {
-      margin-bottom: 5px;
-      font-size: 0.85rem;
-    }
-
-    .compact-footer ul li {
-      margin-bottom: 3px;
-      font-size: 0.85rem;
-    }
-
-    .separator {
-      border: 0;
-      height: 3px;
-      background: #333;
-      margin-top: 60px;
-      margin-bottom: 40px;
     }
 
     .navbar {
@@ -129,6 +81,14 @@
       margin-right: 10px;
     }
 
+    .separator {
+      border: 0;
+      height: 3px;
+      background: #333;
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+
     .about-section {
       padding: 80px 20px;
       text-align: center;
@@ -151,81 +111,65 @@
 
 <body>
   <div class="overlay">
-    <div class="content-wrapper">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
-        <div class="container">
-          <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="main-logo.png" alt="Logo" class="brand-logo">
-            <div class="brand-text">
-              <strong>Swayam</strong> <br>Suraksha
-            </div>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-              <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="report.html">Report a Crime</a></li>
-              <li class="nav-item"><a class="nav-link" href="map.html">Crime Map</a></li>
-              <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      <hr class="separator">
-
-      <!-- About Content -->
-      <section class="about-section">
-        <div class="container">
-          <h2>About Swayam Suraksha</h2>
-          <p class="lead">
-            Swayam Suraksha is an initiative to help citizens stay aware, safe, and informed about crime activities happening around them. 
-            By providing real-time updates and easy reporting options, we empower communities to take charge of their safety. 
-            Our mission is to bridge the gap between citizens and law enforcement, creating safer neighborhoods for everyone.
-          </p>
-        </div>
-      </section>
-    </div>
-
-    <!-- Updated Footer to match the first code -->
-    <footer class="text-white bg-dark pt-2 pb-1 compact-footer">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
       <div class="container">
-        <div class="row text-start align-items-center">
-          <div class="col-md-3 mb-2 d-flex align-items-center">
-            <img src="main-logo.png" alt="Logo" width="30" height="30" class="me-2">
-            <span class="fs-6 fw-bold">Swayam Suraksha</span>
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="main-logo.png" alt="Logo" class="brand-logo">
+          <div class="brand-text">
+            <strong>Swayam</strong> <br>Suraksha
           </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-          <div class="col-md-3 mb-2">
-            <h6 class="mb-1">Stay Updated</h6>
-            <div class="d-flex">
-              <input type="email" class="form-control form-control-sm me-1" placeholder="Email">
-              <button class="btn btn-success btn-sm">OK</button>
-            </div>
-          </div>
-
-          <div class="col-md-3 mb-2">
-            <h6 class="mb-1">Contact</h6>
-            <p class="mb-0">support@swayamsuraksha.com</p>
-            <p class="mb-0">Emergency: 100</p>
-          </div>
-
-          <div class="col-md-3 mb-2">
-            <h6 class="mb-1">Quick Links</h6>
-            <div class="d-flex flex-wrap">
-              <a href="report.html" class="text-success me-2">Report Crime</a>
-              <a href="about.html" class="text-success me-2">About Us</a>
-              <a href="map.html" class="text-success">Crime Map</a>
-            </div>
-          </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="report.html">Report a Crime</a></li>
+            <li class="nav-item"><a class="nav-link" href="map.html">Crime Map</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          </ul>
         </div>
-        <hr class="border-secondary my-1">
-        <div class="text-center pb-1">
-          <small>© Swayam Suraksha all rights reserved 2025</small>
+      </div>
+    </nav>
+
+    <hr class="separator">
+
+    <!-- About Content -->
+    <section class="about-section">
+      <div class="container">
+        <h2>About Swayam Suraksha</h2>
+        <p class="lead">
+          Swayam Suraksha is an initiative to help citizens stay aware, safe, and informed about crime activities happening around them. 
+          By providing real-time updates and easy reporting options, we empower communities to take charge of their safety. 
+          Our mission is to bridge the gap between citizens and law enforcement, creating safer neighborhoods for everyone.
+        </p>
+      </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3 footer-brand">
+            <img src="main-logo.png" alt="Logo" class="footer-logo">
+            <span>Swayam Suraksha</span>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Contact Us</h5>
+            <p>Email: support@swayamsuraksha.com</p>
+            <p>Phone: 100</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Quick Links</h5>
+            <a href="report.html">Report a Crime</a><br>
+            <a href="about.html">About Us</a><br>
+            <a href="map.html">Crime Map</a>
+          </div>
+          <center>©️ Swayam Suraksha all rights reserved 2025</center>
         </div>
       </div>
     </footer>

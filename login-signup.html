@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swayam Suraksha - Login/Signup</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body, html { font-family: 'Poppins', sans-serif; height: 100%; margin: 0; padding: 0; background-image: url('Background.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center; }
+    .overlay { background-color: rgba(255, 255, 255, 0.9); min-height: 100vh; padding-top: 70px; }
+    .navbar { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+    .brand-logo { height: 50px; width: auto; margin-right: 10px; }
+    .nav-link { color: #333 !important; font-weight: 500; margin-right: 15px; }
+    .nav-link:hover { color: #4CAF50 !important; }
+    .btn-success { background-color: #4CAF50; border-color: #4CAF50; border-radius: 50px; }
+    .btn-success:hover { background-color: #388e3c; border-color: #388e3c; }
+    .btn-outline-success { color: #4CAF50; border-color: #4CAF50; border-radius: 50px; }
+    .btn-outline-success:hover { background-color: rgba(76, 175, 80, 0.1); }
+    .card { border-radius: 12px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); border: none; }
+    .form-label { font-weight: 500; }
+    .form-control, .form-select { border-radius: 8px; }
+    .form-control:focus, .form-select:focus { border-color: #4CAF50; box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25); }
+    .toggle-link { color: #4CAF50; text-decoration: underline; cursor: pointer; }
+    .toggle-link:hover { color: #388e3c; }
+    .alert-success-custom { background-color: #e8f5e9; border-color: #c8e6c9; color: #2e7d32; }
+  </style>
+</head>
+<body>
+
+  !-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="main-logo.png" alt="Swayam Suraksha Logo" class="brand-logo">
+      <div class="brand-text ms-2">
+        <strong>Swayam</strong><br>
+        <span>Suraksha</span>
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About Us</a>
+        </li>
+      </ul>
+
+      <!-- Emergency Dropdown aligned to right end -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-medium text-danger" href="#" id="emergencyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Emergency
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="emergencyDropdown">
+            <li><a class="dropdown-item" href="tel:100"><i class="bi bi-telephone-fill me-2"></i>Police - 100</a></li>
+            <li><a class="dropdown-item" href="tel:102"><i class="bi bi-telephone-fill me-2"></i>Ambulance - 102</a></li>
+            <li><a class="dropdown-item" href="tel:101"><i class="bi bi-telephone-fill me-2"></i>Fire Service - 101</a></li>
+            <li><a class="dropdown-item" href="tel:1091"><i class="bi bi-telephone-fill me-2"></i>Women's Helpline - 1091</a></li>
+            <li><a class="dropdown-item" href="tel:108"><i class="bi bi-telephone-fill me-2"></i>Disaster Management - 108</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+      
+
+  <!-- Main Overlay Section -->
+<div class="overlay">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        
+        <!-- Sign Up Form -->
+        <div class="card mb-4" id="signupForm">
+          <div class="card-header bg-white text-center border-0 pt-4">
+            <h2 class="card-title">Create Account</h2>
+          </div>
+          <div class="card-body p-4">
+            <form id="formSignup">
+              <div class="mb-3">
+                <label for="signupUserType" class="form-label">Register as:</label>
+                <select class="form-select" id="signupUserType" required>
+                  <option value="" selected disabled>Select...</option>
+                  <option value="citizen">Citizen</option>
+                  <option value="police">Police Officer</option>
+                </select>
+              </div>
+              
+              <div class="mb-3">
+                <label for="signupEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="signupPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signupPassword" placeholder="Enter password" required>
+              </div>
+              
+              <div class="mb-3 d-none" id="policeFields">
+                <label for="signupIdProof" class="form-label">Upload Police ID Proof</label>
+                <input type="file" class="form-control" id="signupIdProof" accept=".jpg,.jpeg,.png,.pdf">
+              </div>
+              
+              <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-success py-2">Sign Up</button>
+              </div>
+              
+              <div class="text-center">
+                <span class="toggle-link" onclick="toggleForms('signin')">Already have an account? Sign In</span>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Sign In Form -->
+        <div class="card mb-4 d-none" id="signinForm">
+          <div class="card-header bg-white text-center border-0 pt-4">
+            <h2 class="card-title">Sign In</h2>
+          </div>
+          <div class="card-body p-4">
+            <form id="formSignin">
+              <div class="mb-3">
+                <label for="signinEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="signinEmail" placeholder="Enter your email" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="signinPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signinPassword" placeholder="Enter password" required>
+              </div>
+              
+              <div class="text-end mb-3">
+                <span class="toggle-link" onclick="showForgotPasswordModal()">Forgot password?</span>
+              </div>
+              
+              <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-success py-2">Sign In</button>
+              </div>
+              
+              <div class="text-center">
+                <span class="toggle-link" onclick="toggleForms('signup')">Don't have an account? Create One</span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Forgot Password Modal -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="forgotPasswordModalLabel">Reset Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="resetEmailForm">
+          <p class="text-muted">Enter your email address and we'll send you a link to reset your password.</p>
+          <form id="formResetPassword">
+            <div class="mb-3">
+              <label for="resetEmail" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="resetEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-success">Send Reset Link</button>
+            </div>
+          </form>
+        </div>
+        
+        <div id="resetSuccess" class="d-none">
+          <div class="alert alert-success-custom d-flex align-items-center" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <div>
+              <strong>Success!</strong>
+              <p class="mb-0">A password reset link has been sent to your email address.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBxc2hgvEXwSWJexgECSX4ohbPWfTEFcxU",
+    authDomain: "swayam-surakasha.firebaseapp.com",
+    projectId: "swayam-surakasha",
+    storageBucket: "swayam-surakasha.firebasestorage.app",
+    messagingSenderId: "906502359189",
+    appId: "1:906502359189:web:8b737c144ebcd2d650339c",
+    measurementId: "G-2KT69QEK5X"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const storage = firebase.storage();
+</script>
+
+<script>
+  function toggleForms(formType) {
+    document.getElementById('signupForm').classList.toggle('d-none', formType === 'signin');
+    document.getElementById('signinForm').classList.toggle('d-none', formType === 'signup');
+  }
+
+  document.getElementById('signupUserType').addEventListener('change', function () {
+    document.getElementById('policeFields').classList.toggle('d-none', this.value !== 'police');
+  });
+
+  function showForgotPasswordModal() {
+    const modal = new bootstrap.Modal(document.getElementById('forgotPasswordModal'));
+    document.getElementById('resetEmailForm').classList.remove('d-none');
+    document.getElementById('resetSuccess').classList.add('d-none');
+    document.getElementById('resetEmail').value = '';
+    modal.show();
+  }
+
+  document.getElementById('formSignup').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const userType = document.getElementById('signupUserType').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+
+    try {
+      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+
+      if (userType === 'police') {
+        const fileInput = document.getElementById('signupIdProof');
+        const file = fileInput.files[0];
+
+        if (!file) {
+          alert('Please upload your police ID proof.');
+          return;
+        }
+
+        const storageRef = storage.ref(`police_ids/${user.uid}/${file.name}`);
+        await storageRef.put(file);
+      }
+
+      alert('Signup successful! Please sign in.');
+      toggleForms('signin');
+    } catch (error) {
+      alert(`Signup Error: ${error.message}`);
+    }
+  });
+
+  document.getElementById('formSignin').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const email = document.getElementById('signinEmail').value;
+    const password = document.getElementById('signinPassword').value;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      alert('Signin successful! Redirecting...');
+      window.location.href = 'index.html';
+    } catch (error) {
+      alert(`Signin Error: ${error.message}`);
+    }
+  });
+
+  document.getElementById('formResetPassword').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const email = document.getElementById('resetEmail').value;
+
+    try {
+      await auth.sendPasswordResetEmail(email);
+      document.getElementById('resetEmailForm').classList.add('d-none');
+      document.getElementById('resetSuccess').classList.remove('d-none');
+
+      setTimeout(() => {
+        const modal = bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal'));
+        modal.hide();
+      }, 3000);
+    } catch (error) {
+      alert(`Reset Error: ${error.message}`);
+    }
+  });
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

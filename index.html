@@ -4,13 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Swayam Suraksha</title>
-
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -18,6 +13,7 @@
       font-family: 'Poppins', sans-serif;
       color: #333;
       background-color: #f8f9fa;
+      padding-top: 70px;
     }
 
     .btn-green {
@@ -173,21 +169,19 @@
     }
 
     .brand-logo {
-      height: 50px;  /* Fixed logo height */
+      height: 50px;
       width: auto;
       margin-right: 10px;
     }
 
-    /* New styles for the hr separator */
     .separator {
       border: 0;
       height: 3px;
       background: #333;
-      margin-top: 60px;  /* Add some space before the separator */
-      margin-bottom: 40px;  /* Add space after the separator */
+      margin-top: 60px;
+      margin-bottom: 40px;
     }
 
-    /* Fixed position for WhatsApp and Call icons */
     .fixed-icons {
       position: fixed;
       bottom: 20px;
@@ -204,19 +198,209 @@
       color: white;
       font-size: 24px;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .fixed-icons a:hover {
+      transform: scale(1.1);
     }
 
     .fixed-icons a.call {
       background-color: #28a745;
+    }
+
+    .chatbot-icon {
+      position: fixed;
+      bottom: 200px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #0d6efd;
+      padding: 15px;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .chatbot-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .chatbot-container {
+      position: fixed;
+      bottom: 200px;
+      right: 20px;
+      width: 350px;
+      height: 450px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+      z-index: 1001;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chatbot-header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chatbot-close {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .chatbot-messages {
+      flex-grow: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 15px;
+    }
+
+    .user-message {
+      background-color: #e8f5e9;
+      margin-left: auto;
+      border-bottom-right-radius: 5px;
+    }
+
+    .bot-message {
+      background-color: #f1f1f1;
+      margin-right: auto;
+      border-bottom-left-radius: 5px;
+    }
+
+    .emergency-message {
+      background-color: #ffebee;
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    .chatbot-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #eee;
+      flex-direction: column;
+    }
+
+    .chatbot-input-row {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .chatbot-input input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      margin-right: 10px;
+    }
+
+    .chatbot-input button {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .quick-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .quick-option {
+      background-color: #e3f2fd;
+      border: 1px solid #bbdefb;
+      color: #0d6efd;
+      border-radius: 15px;
+      padding: 5px 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quick-option:hover {
+      background-color: #bbdefb;
+    }
+
+    .quick-option.emergency {
+      background-color: #ffebee;
+      border-color: #ffcdd2;
+      color: #d32f2f;
+    }
+
+    .quick-option.emergency:hover {
+      background-color: #ffcdd2;
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+      width: 5%;
+      opacity: 0.8;
+    }
+
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+      background-color: rgba(0,0,0,0.3);
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-img img {
+        width: 100%;
+      }
+      
+      .chatbot-container {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+      }
+      .btn-outline-danger {
+  animation: pulse 2s infinite;
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+  transform: scale(1.05);
+}
     }
   </style>
 </head>
 
 <body>
 
-<!-- Google Translate -->
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<div id="google_translate_element" style="position: absolute; top: 40px; right: 10px; z-index: 1000; background: #fff; padding: 5px; border: 1px solid black;"></div>
+<div id="google_translate_element" style="
+  position: fixed;
+  top: 80px;
+  right: 10px;
+  z-index: 9999;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+"></div>
+
+
 
 <script type="text/javascript">
   function googleTranslateElementInit() {
@@ -228,7 +412,6 @@
   }
 </script>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -240,30 +423,35 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <button href="https://www.chatbase.co/dashboard/thunder77alliances-team/chatbot/KX7PeVzNOtjnWWolpLI7M">CHATBOT</button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="map.html">Crime Map</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i> Profile
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+            <li><a class="dropdown-item" href="dashboard.html">Dashboard</a></li>
+            <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+          </ul>
+        </li> 
+        
+        <li class="nav-item" id="login-btn">
           <a href="signin.html" class="btn btn-green me-2">Login</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="register-btn">
           <a href="signup.html" class="btn btn-outline-success rounded-pill">Register</a>
         </li>
-        
+        <li class="nav-item" id="logout-btn" style="display: none;">
+          <a href="signin.html" class="btn btn-outline-danger rounded-pill" id="logout-link">Logout</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-
-<!-- HR Separator -->
-<hr class="separator">
-
-<!-- Hero Section -->
 <section class="hero-section">
   <div class="container hero-content">
     <div class="hero-text">
@@ -277,7 +465,6 @@
   </div>
 </section>
 
-<!-- Past Activities Carousel -->
 <section class="alternate-bg-green">
   <div class="container">
     <h2 class="text-center">Past Activities</h2>
@@ -315,18 +502,16 @@
         </div>
 
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-  
 </section>
 
-<!-- Local News Carousel -->
 <section class="alternate-bg-cream">
   <div class="container">
     <h2 class="text-center">Local News</h2>
@@ -364,15 +549,50 @@
         </div>
 
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
 </section>
+
+<div class="fixed-icons">
+  <a href="tel:100" class="call"><i class="bi bi-telephone-fill"></i></a>
+  <a href="https://wa.me/911234567890" target="_blank"><i class="bi bi-whatsapp"></i></a>
+</div>
+
+<div class="chatbot-icon" id="chatbotIcon">
+  <i class="bi bi-chat-dots-fill"></i>
+</div>
+
+<div class="chatbot-container" id="chatbotContainer">
+  <div class="chatbot-header">
+    <h5 class="m-0">Swayam Suraksha Assistant</h5>
+    <span class="chatbot-close" id="chatbotClose">&times;</span>
+  </div>
+  <div class="chatbot-messages" id="chatbotMessages">
+    <div class="message bot-message">
+      Hello! I'm your Swayam Suraksha assistant. How can I help you today?
+    </div>
+  </div>
+  <div class="chatbot-input">
+    <div class="quick-options" id="quickOptions">
+      <button class="quick-option emergency" data-value="fire">Fire</button>
+      <button class="quick-option emergency" data-value="theft">Theft</button>
+      <button class="quick-option emergency" data-value="following">Someone Following</button>
+      <button class="quick-option emergency" data-value="medical">Medical Emergency</button>
+      <button class="quick-option" data-value="report">Report Incident</button>
+      <button class="quick-option" data-value="help">Help</button>
+    </div>
+    <div class="chatbot-input-row">
+      <input type="text" id="chatbotInput" placeholder="Type your message...">
+      <button id="chatbotSend">Send</button>
+    </div>
+  </div>
+</div>
 
 <footer class="text-white bg-dark pt-2 pb-1 compact-footer">
   <div class="container">
@@ -411,10 +631,174 @@
     </div>
   </div>
 </footer>
-</div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+    const quickOptions = document.getElementById('quickOptions');
+
+    const responses = {
+      'hi': 'Hello! I\'m here to assist you. What can I do for you today?',
+      'hello': 'Hi there! I\'m ready to help you with any safety concerns.',
+      'hey': 'Hey! I\'m here for you. How can I assist?',
+      'help': 'I\'m here to help! I can assist with emergency situations, reporting incidents, or connecting you with authorities. What do you need?',
+      'i\'m in danger': 'I\'m alerting emergency services immediately! I\'ll dispatch help to your location. Stay in a safe place if possible and keep this chat open.',
+      'there is a fire': 'I\'ll call the fire department immediately! Please evacuate the building now. Stay low to avoid smoke inhalation. Help is on the way!',
+      'fire': 'I\'ll call the fire department immediately! Please evacuate the building now. Stay low to avoid smoke inhalation. Help is on the way!',
+      'someone is following me': 'I\'m alerting the police right now! Try to get to a public place with other people. I\'ll track your location and send help. Stay on this chat if possible.',
+      'following': 'I\'m alerting the police right now! Try to get to a public place with other people. I\'ll track your location and send help. Stay on this chat if possible.',
+      'emergency': 'I\'m dispatching emergency services immediately! Please stay on this chat while I coordinate help for you.',
+      'police': 'I\'ll connect you with the police right away! For immediate assistance, I can also dispatch emergency services to your location.',
+      'report': 'I\'ll help you file a report right now. Please provide details about the incident, and I\'ll make sure it reaches the appropriate authorities.',
+      'theft': 'I\'ll report this theft immediately! Please provide any details you can about what was stolen and any suspects. I\'ll alert the local police.',
+      'medical': 'I\'m calling medical emergency services right now! Please stay calm and I\'ll stay with you until help arrives. Is the person conscious and breathing?',
+      'contact': 'I\'ll connect you with our support team immediately. You can also reach Swayam Suraksha at support@swayamsuraksha.com or our emergency number 100.',
+      'about': 'Swayam Suraksha is your safety partner, dedicated to providing immediate assistance during emergencies and connecting you with the right authorities when needed.',
+      'thanks': 'You\'re welcome! I\'m always here to help. Is there anything else you need assistance with?',
+      'thank you': 'You\'re welcome! Your safety is my priority. Is there anything else I can help you with?'
+    };
+
+    const defaultResponse = "I'll help you with that. For immediate emergency assistance, I can alert authorities right away. For other inquiries, I can connect you with our support team at support@swayamsuraksha.com.";
+
+    chatbotIcon.addEventListener('click', function() {
+      chatbotContainer.style.display = 'flex';
+    });
+
+    chatbotClose.addEventListener('click', function() {
+      chatbotContainer.style.display = 'none';
+    });
+
+    function sendMessage(message = null) {
+      const userMessage = message || chatbotInput.value.trim();
+      if (userMessage === '') return;
+
+      addMessage(userMessage, 'user');
+      chatbotInput.value = '';
+
+      setTimeout(() => {
+        const response = getResponse(userMessage.toLowerCase());
+        addMessage(response.text, 'bot', response.isEmergency);
+      }, 500);
+    }
+
+    function getResponse(message) {
+      const emergencyKeywords = ['danger', 'emergency', 'fire', 'following', 'help me', 'sos', 'theft', 'medical'];
+      const isEmergency = emergencyKeywords.some(keyword => message.includes(keyword));
+      
+      for (const key in responses) {
+        if (message.includes(key)) {
+          return {
+            text: responses[key],
+            isEmergency: isEmergency
+          };
+        }
+      }
+
+      return {
+        text: defaultResponse,
+        isEmergency: isEmergency
+      };
+    }
+
+    function addMessage(text, sender, isEmergency = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message');
+      
+      if (sender === 'user') {
+        messageDiv.classList.add('user-message');
+      } else {
+        messageDiv.classList.add('bot-message');
+        if (isEmergency) {
+          messageDiv.classList.add('emergency-message');
+        }
+      }
+      
+      messageDiv.textContent = text;
+      chatbotMessages.appendChild(messageDiv);
+      
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    chatbotSend.addEventListener('click', () => sendMessage());
+    chatbotInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    quickOptions.addEventListener('click', function(e) {
+      if (e.target.classList.contains('quick-option')) {
+        const value = e.target.getAttribute('data-value');
+        sendMessage(value);
+      }
+    });
+
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          document.getElementById("login-btn").style.display = "none";
+          document.getElementById("register-btn").style.display = "none";
+        } else {
+          document.getElementById("login-btn").style.display = "block";
+          document.getElementById("register-btn").style.display = "block";
+        }
+      });
+    }
+  });
+</script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyBxc2hgvEXwSWJexgECSX4ohbPWfTEFcxU",
+    authDomain: "swayam-surakasha.firebaseapp.com",
+    projectId: "swayam-surakasha",
+    storageBucket: "swayam-surakasha.firebasestorage.app",
+    messagingSenderId: "906502359189",
+    appId: "1:906502359189:web:8b737c144ebcd2d650339c",
+    measurementId: "G-2KT69QEK5X"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  
+  window.firebase = { auth: () => auth };
+  // Inside the firebase auth state change handler
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+    document.getElementById("login-btn").style.display = "none";
+    document.getElementById("register-btn").style.display = "none";
+    document.getElementById("logout-btn").style.display = "block";
+  } else {
+    document.getElementById("login-btn").style.display = "block";
+    document.getElementById("register-btn").style.display = "block";
+    document.getElementById("logout-btn").style.display = "none";
+  }
+});
+
+// Add logout functionality
+document.getElementById('logout-link')?.addEventListener('click', function(e) {
+  e.preventDefault();
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful
+    window.location.href = 'index.html'; // Redirect to home page
+  }).catch((error) => {
+    console.error('Logout error:', error);
+  });
+});
+  
+  
+</script>
 </body>
 </html>
