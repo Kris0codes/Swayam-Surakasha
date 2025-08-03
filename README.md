@@ -36,9 +36,8 @@
 
 | Citizen Dashboard | Police Dashboard |
 |-------------------|------------------|
-| ![](<img width="1887" height="987" alt="image" src="https://github.com/user-attachments/assets/42b7a11b-962e-4613-9f64-0e289d7a8475" />
-) | ![](<img width="1870" height="985" alt="image" src="https://github.com/user-attachments/assets/3af2746d-5267-4fda-b110-fad11a2dfde7" />
-) |
+| ![](<img width="1887" height="987" alt="Screenshot 2025-08-03 113149" src="https://github.com/user-attachments/assets/85e96d9b-a72c-47aa-9985-f74d2dba72a2" />
+) | ![](<img width="1870" height="985" alt="image" src="https://github.com/user-attachments/assets/3af2746d-5267-4fda-b110-fad11a2dfde7" />) |
 
 ---
 
